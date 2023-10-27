@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -37,9 +38,12 @@ public class PlayerMovement : MonoBehaviour
     private Animator animator;
     private PlayerAttack playerAttack;
     private Health health;
+    private bool runPressed = false;
+    //private PlayerInput playerInput;
 
     void Start()
     {
+        
         player = gameObject.GetComponent<Rigidbody2D>();
         animator = gameObject.GetComponent<Animator>();
         playerAttack = gameObject.GetComponent<PlayerAttack>();
@@ -51,6 +55,7 @@ public class PlayerMovement : MonoBehaviour
         startBoxColliderOffsetX = boxCollider.offset.x;
         startBoxColliderOffsetY = boxCollider.offset.y;
         startBoxColliderLayerMask = boxCollider.forceSendLayers;
+        //playerInput = GetComponent<PlayerInput>();
     }
 
     void Update()
@@ -59,16 +64,7 @@ public class PlayerMovement : MonoBehaviour
         {
             // Resetta la posizione del PG se cade dallo schermo
             if (transform.position.y < -5.6f) transform.position = pos_iniziale;
-
-            if (!health.getHurt())
-            {
-                horizontal = Input.GetAxisRaw("Horizontal");
-                movement();
-            } else
-            {
-                horizontal = 0;
-            }
-
+            movement();
             Flip();
         } else
         {
@@ -76,6 +72,8 @@ public class PlayerMovement : MonoBehaviour
         }
         animator.SetFloat("Speed", Mathf.Abs(horizontal * speed));
         animator.SetBool("falling", !checkBottomTerrain() && nJumps == 0);
+        animator.SetInteger("nJump", nJumps);
+        animator.SetBool("strike", rollPressed);
     }
 
     private void FixedUpdate()
@@ -156,53 +154,96 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public void movement() {
-        jumpChecker();
-        rollChecker();
+    private void movement() {
         runChecker();
+        rollChecker();
     }
 
-    private void jumpChecker()
+    public void onMovement(InputAction.CallbackContext value) {  //Da verificare l'efficenza nel caso dell'interazzione con più azioni nello stesso tempo
+        if (!health.getHurt())
+        {
+            switch (value.action.name) {
+                case "Move":
+                    movementChecker(value);
+                    break;
+                case "Jump":
+                    jumpChecker(value);
+                    break;
+                case "Run":
+                    onRun(value);
+                    break;
+                case "Roll":
+                    onRoll(value);
+                    break;
+            }
+        }
+        else
+        {
+            horizontal = 0;
+        }
+    }
+
+    private void movementChecker(InputAction.CallbackContext value) {
+        horizontal = value.ReadValue<Vector2>().x;
+    }
+
+    private void jumpChecker(InputAction.CallbackContext v)
     {
-        if (Input.GetButtonDown("Jump") && nJumps < 2 && !rollPressed)
+        if (v.started && nJumps < 2 && !rollPressed)
         {
             nJumps++;
             player.velocity = new Vector2(player.velocity.x, jumpingPower);
         }
-        animator.SetInteger("nJump", nJumps);
     }
 
-    private void runChecker() {
-        if (Input.GetKey(KeyCode.LeftControl) && !rollPressed)
+    /*public void onJump(InputAction.CallbackContext v) {
+        jump = v.started;
+    }*/
+
+    private void onRun(InputAction.CallbackContext v) {
+        if (v.started) runPressed = v.started; else runPressed = v.action.triggered;
+    }
+
+    private void runChecker()
+    {
+        if (runPressed && !rollPressed)
         {
             speed = runSpeed;
         }
-        else
+        else if (!rollPressed)
         {
-            if (speed > walkSpeed && rollPressed)
-            {
-                speed -= 0.05f;
-            } else
-            {
-                speed = walkSpeed;
-            }
+            speed = walkSpeed;
         }
     }
 
     private void rollChecker()
     {
-        if ((horizontal == 1 || horizontal == -1) && Input.GetKeyDown(KeyCode.LeftShift)) {
-            rollPressed = !rollPressed;
-            speed = runSpeed;
-            if (rollPressed == false)
+        if (rollPressed)
+        {
+            if (speed > walkSpeed)
+            {
+                speed -= 0.05f;
+            }
+            if (horizontal == 0)
             {
                 animationRollFinished();
             }
-        } else if (horizontal == 0 && rollPressed)
+        }
+    }
+
+    private void onRoll(InputAction.CallbackContext v)
+    {
+        if (v.started)
         {
+            speed = runSpeed;
+            rollPressed = true;
+        }
+        if ((horizontal == 1 || horizontal == -1) && v.action.triggered) {
+            rollPressed = true;
+        } else if (v.action.triggered == false && v.started == false) {
+            speed = walkSpeed;
             animationRollFinished();
         }
-        animator.SetBool("strike", rollPressed);
     }
 
     private void rotateColliderSizeInRoll() //Usato in animazione
@@ -222,15 +263,15 @@ public class PlayerMovement : MonoBehaviour
         boxCollider.forceReceiveLayers = startBoxColliderLayerMask;
     }
 
-    public void knockbackDirection(float mainKnockBack, float positionXToReach) {
+    public void knockbackDirection(float knockBack, float positionXToReach) {
         if (isFacingRight) {
             if (positionXToReach <= transform.position.x)
             {
-                player.velocity = new Vector2((-mainKnockBack * speed), player.velocity.y);
+                player.velocity = new Vector2((-knockBack * speed), player.velocity.y);
             }
         } else {
             if (positionXToReach >= transform.position.x)
-                player.velocity = new Vector2((mainKnockBack * speed), player.velocity.y);
+                player.velocity = new Vector2((knockBack * speed), player.velocity.y);
         }
     }
 
