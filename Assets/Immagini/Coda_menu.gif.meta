@@ -128,7 +128,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Coda_menu_0: -280113693661503839
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
