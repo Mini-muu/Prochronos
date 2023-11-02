@@ -3,6 +3,7 @@
 public class Enemy_1_DeadState : EnemyState
 {
     Enemy_1 enemy;
+    bool executed;
 
     public Enemy_1_DeadState(Enemy _enemyBase, EnemyStateMachine _enemyStateMachine, string _animBoolName, Enemy_1 _enemy) : base(_enemyBase, _enemyStateMachine, _animBoolName)
     {
@@ -13,11 +14,7 @@ public class Enemy_1_DeadState : EnemyState
     {
         base.Enter();
 
-        enemy.Anim.SetBool(enemy.LastAnimBolName, true);
-        enemy.Anim.speed = 0;
-        enemy.CD.enabled = false;
-        stateTimer = .15f;
-        enemy.gameObject.layer = 0;
+        executed = false;
     }
 
     public override void Exit()
@@ -29,9 +26,19 @@ public class Enemy_1_DeadState : EnemyState
     {
         base.Update();
 
-        if (stateTimer > 0)
+        if (stateTimer > 0 && executed)
         {
-            rb.velocity = new Vector2(0, 10);
+            rb.velocity = new Vector2(0, 8);
+        }
+
+        if(triggerCalled && !executed)
+        {
+            enemy.Anim.SetBool(enemy.LastAnimBolName, true);
+            enemy.Anim.speed = 0;
+            enemy.CD.enabled = false;
+            stateTimer = .15f;
+            enemy.gameObject.layer = 0;
+            executed = true;
         }
     }
 }

@@ -15,6 +15,7 @@
     {
         base.Enter();
 
+        stateTimer = .1f;
     }
 
     public override void Exit()
@@ -26,6 +27,11 @@
     public override void Update()
     {
         base.Update();
+
+        if (stateTimer < 0)
+        {
+            player.SetZeroVelocity();
+        }
 
         if (triggerCalled)
         {

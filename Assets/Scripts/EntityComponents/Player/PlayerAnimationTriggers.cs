@@ -11,6 +11,16 @@ public class PlayerAnimationTriggers : MonoBehaviour
 
     private void AttackTrigger()
     {
+        PerformAttack(false);
+    }
+
+    private void ChargedAttackTrigger()
+    {
+        PerformAttack(true);
+    }
+
+    private void PerformAttack(bool isCharged)
+    {
         Collider2D[] colliders = Physics2D.OverlapCircleAll(player.attackCheck.position, player.attackCheckRadius);
 
         foreach (var hit in colliders)
@@ -18,7 +28,10 @@ public class PlayerAnimationTriggers : MonoBehaviour
             if (hit.GetComponent<Enemy>() != null)
             {
                 EnemyStats target = hit.GetComponent<EnemyStats>();
-                player.Stats.DoDamage(target);
+                if(isCharged)
+                    player.Stats.DoStrongDamage(target);
+                else
+                    player.Stats.DoDamage(target);
             }
         }
     }

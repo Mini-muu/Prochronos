@@ -1,23 +1,38 @@
-﻿using System;
+﻿using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class CharacterStats : MonoBehaviour
 {
     [Header("Stats")]
     public Stat maxHealth;
-    public Stat stamina;
+    public Stat maxStamina;
     public Stat armor;
     public Stat damage;
+    public Stat strongDamage;
+
+    [Space(20)]
 
     public int currentHealth;
+    public float currentStamina;
+    public float staminaPerSec;
+    public float staminaWaitingRecovery = 1f;
 
     public System.Action onHealthChanged;
     //TODO - Apply
     public System.Action onMaxHealthChanged;
 
+    public System.Action onStaminaChanged;
+    //TODO - Apply
+    public System.Action onMaxStaminChanged;
+
     protected virtual void Start()
     {
         currentHealth = GetMaxHealthValue();
+        currentStamina = GetMaxStaminaValue();
+    }
+
+    protected virtual void Update()
+    {
 
     }
 
@@ -25,9 +40,21 @@ public class CharacterStats : MonoBehaviour
     {
         int totalDamage = damage.GetValue();
 
+        Damage(totalDamage, _targetStats);
+    }
+
+    public virtual void DoStrongDamage(CharacterStats _targetStats)
+    {
+        int totalDamage = strongDamage.GetValue();
+
+        Damage(totalDamage, _targetStats);
+    }
+
+    private void Damage(int totalDamage, CharacterStats _targetStats)
+    {
         totalDamage = CheckTargetArmor(_targetStats, totalDamage);
 
-        _targetStats.TakeDamage(totalDamage);
+        _targetStats.TryTakeDamage(totalDamage);
     }
 
     private int CheckTargetArmor(CharacterStats _targetStats, int _totalDamage)
@@ -38,7 +65,7 @@ public class CharacterStats : MonoBehaviour
         return _totalDamage;
     }
 
-    public virtual void TakeDamage(int _damage)
+    public virtual bool TryTakeDamage(int _damage)
     {
         DecreaseHealthBy(_damage);
 
@@ -46,6 +73,8 @@ public class CharacterStats : MonoBehaviour
         {
             Die();
         }
+
+        return true;
     }
 
     protected virtual void DecreaseHealthBy(int _damage)
@@ -64,5 +93,10 @@ public class CharacterStats : MonoBehaviour
     public int GetMaxHealthValue()
     {
         return maxHealth.GetValue();
+    }
+
+    public float GetMaxStaminaValue()
+    {
+        return maxStamina.GetValue();
     }
 }

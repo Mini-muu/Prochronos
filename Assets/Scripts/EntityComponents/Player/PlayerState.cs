@@ -30,7 +30,6 @@ public class PlayerState
 
     public virtual void Update()
     {
-
         stateTimer -= Time.deltaTime;
 
         //Debug.Log(stateTimer);

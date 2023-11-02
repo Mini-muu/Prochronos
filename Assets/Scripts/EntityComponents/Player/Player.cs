@@ -9,15 +9,19 @@ public class Player : Entity
     public float parryDuration = .2f;
 
     public bool IsBusy { get; private set; }
+    [HideInInspector] public bool allowStaminaRecovery = true;
 
     [Header("Move Info")]
     public float moveSpeed = 6f;
     public float runSpeed = 8f;
+    public float runConsumptionPerSec = 0.2f;
     public float jumpForce = 12f;
+    [HideInInspector] public bool canDoubleJump = true;
 
-    [Header("Dash Info")]
+    [Header("Roll Info")]
     public float rollSpeed = 25f;
     public float rollDuration = 2.5f;
+    public float rollConsumption = 2;
     public float RollDir { get; private set; }
 
     [HideInInspector] public SkillManager skill;
@@ -87,7 +91,7 @@ public class Player : Entity
         base.Update();
         StateMachine.CurrentState.Update();
 
-        CheckForDashInput();
+        CheckForRollInput();
     }
 
     public IEnumerator BusyFor(float _seconds)
@@ -101,7 +105,7 @@ public class Player : Entity
 
     public void AnimationTrigger() => StateMachine.CurrentState.AnimationFinishTrigger();
 
-    private void CheckForDashInput()
+    private void CheckForRollInput()
     {
         if (IsWallDetected())
         {

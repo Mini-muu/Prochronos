@@ -30,6 +30,11 @@ public class PlayerGroundedState : PlayerState
             stateMachine.ChangeState(player.NormalAttrackState);
         }
 
+        if (Input.GetKeyDown(KeyCode.Mouse1))
+        {
+            stateMachine.ChangeState(player.ChargedAttackState);
+        }
+
         if (!player.IsGroundDetected())
         {
             stateMachine.ChangeState(player.AirState);
@@ -38,6 +43,7 @@ public class PlayerGroundedState : PlayerState
         if (Input.GetKeyDown(KeyCode.Space) && player.IsGroundDetected())
         {
             stateMachine.ChangeState(player.JumpState);
+            player.canDoubleJump = true;
         }
     }
 }

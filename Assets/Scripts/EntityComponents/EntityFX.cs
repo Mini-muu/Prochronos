@@ -18,7 +18,6 @@ public class EntityFX : MonoBehaviour
 
     private IEnumerator FlashFX()
     {
-        Debug.Log("Call");
         sr.material = hitMat;
 
         yield return new WaitForSeconds(flashDuration);

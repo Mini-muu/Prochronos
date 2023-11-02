@@ -3,6 +3,7 @@
 public class PlayerManager : MonoBehaviour
 {
     public static PlayerManager instance;
+    public PlayerStats playerStats;
     public Player player;
 
     private void Awake()

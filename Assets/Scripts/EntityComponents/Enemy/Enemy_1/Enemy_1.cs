@@ -24,7 +24,7 @@ public class Enemy_1 : Enemy
         BattleState = new Enemy_1_BattleState(this, StateMachine, "Move", this);
         AttackState = new Enemy_1_AttackState(this, StateMachine, "Attack", this);
         StunnedState = new Enemy_1_StunnedState(this, StateMachine, "Stunned", this);
-        DeadState = new Enemy_1_DeadState(this, StateMachine, "Idle", this);
+        DeadState = new Enemy_1_DeadState(this, StateMachine, "Dead", this);
     }
 
     protected override void Start()

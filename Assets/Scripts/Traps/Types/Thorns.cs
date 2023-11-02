@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class Thorns : Trap
@@ -13,16 +12,19 @@ public class Thorns : Trap
             Player p = collider.GetComponent<Player>();
             if (p != null)
             {
-                pStats.TakeDamage(damage);
-                p.StateMachine.ChangeState(p.KnockbackState);
+                if (doesKnockback && pStats.TryTakeDamage(damage))
+                {
+                    if (p.Stats.currentHealth > 0)
+                    {
+                        p.StateMachine.ChangeState(p.KnockbackState);
+                    }
+                }
             }
             else
             {
                 EnemyStats eStats = collider.gameObject.GetComponent<EnemyStats>();
-                eStats.TakeDamage(eStats.currentHealth);
+                eStats.TryTakeDamage(eStats.currentHealth);
             }
         }
-
-        Debug.Log("Triggered");
     }
 }
