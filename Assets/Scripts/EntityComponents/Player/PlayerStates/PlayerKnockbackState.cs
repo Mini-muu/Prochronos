@@ -12,6 +12,7 @@
     public override void Exit()
     {
         base.Exit();
+        player.knockbackPower = 1;
     }
 
     public override void Update()

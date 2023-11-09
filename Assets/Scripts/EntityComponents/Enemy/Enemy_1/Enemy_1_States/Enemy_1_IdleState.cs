@@ -2,11 +2,9 @@
 
 public class Enemy_1_IdleState : Enemy_1_GroundedState
 {
-    //private Enemy_Skeleton enemy;
-
     public Enemy_1_IdleState(Enemy _enemyBase, EnemyStateMachine _enemyStateMachine, string _animBoolName, Enemy_1 _enemy) : base(_enemyBase, _enemyStateMachine, _animBoolName, _enemy)
-    {
-        //  this.enemy = _enemy;
+    { 
+    
     }
 
     public override void Enter()

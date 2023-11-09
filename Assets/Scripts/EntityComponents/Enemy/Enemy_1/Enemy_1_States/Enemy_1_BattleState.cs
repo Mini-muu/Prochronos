@@ -2,8 +2,9 @@
 
 public class Enemy_1_BattleState : EnemyState
 {
-    protected Transform player;
+    protected Transform playerTransform;
     protected Enemy_1 enemy;
+    private Player player;
     private int moveDir;
 
     public Enemy_1_BattleState(Enemy _enemyBase, EnemyStateMachine _enemyStateMachine, string _animBoolName, Enemy_1 _enemy) : base(_enemyBase, _enemyStateMachine, _animBoolName)
@@ -15,7 +16,8 @@ public class Enemy_1_BattleState : EnemyState
     {
         base.Enter();
 
-        player = PlayerManager.instance.player.transform;
+        player = PlayerManager.instance.player;
+        playerTransform = player.transform;
     }
 
     public override void Exit()
@@ -41,18 +43,18 @@ public class Enemy_1_BattleState : EnemyState
         }
         else
         {
-            if (stateTimer < 0 || Vector2.Distance(player.transform.position, enemy.transform.position) > 10)
+            if (stateTimer < 0 || Vector2.Distance(playerTransform.transform.position, enemy.transform.position) > 10)
             {
                 stateMachine.ChangeState(enemy.IdleState);
             }
         }
 
-        if (player.position.x > enemy.transform.position.x)
+        if (playerTransform.position.x > enemy.transform.position.x)
         {
             moveDir = 1;
 
         }
-        else if (player.position.x < enemy.transform.position.x)
+        else if (playerTransform.position.x < enemy.transform.position.x)
         {
             moveDir = -1;
         }

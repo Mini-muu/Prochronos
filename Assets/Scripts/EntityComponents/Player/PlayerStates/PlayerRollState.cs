@@ -17,7 +17,7 @@ public class PlayerRollState : PlayerState
 
         stateTimer = player.rollDuration;
 
-        player.ToggleImmunity();
+        player.Stats.MakeInvincible(true);
     }
 
     public override void Exit()
@@ -25,7 +25,7 @@ public class PlayerRollState : PlayerState
         base.Exit();
 
         player.SetVelocity(0, rb.velocity.y);
-        player.ToggleImmunity();
+        player.Stats.MakeInvincible(false);
     }
 
     public override void Update()

@@ -11,9 +11,7 @@
 
     public override bool TryTakeDamage(int _damage)
     {
-        base.TryTakeDamage(_damage);
-        enemy.DamageEffect();
-        return true;
+        return base.TryTakeDamage(_damage);
     }
 
     public override void DoDamage(CharacterStats _targetStats)

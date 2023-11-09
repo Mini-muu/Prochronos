@@ -15,12 +15,7 @@ public class PlayerStats : CharacterStats
 
     public override bool TryTakeDamage(int _damage)
     {
-        if (player.HasImmunity()) return false;
-        
-        base.TryTakeDamage(_damage);
-        player.DamageEffect();
-
-        return true;
+        return base.TryTakeDamage(_damage);
     }
 
     protected override void Die()

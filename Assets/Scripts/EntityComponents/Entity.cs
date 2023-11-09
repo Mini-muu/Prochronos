@@ -9,7 +9,8 @@ public class Entity : MonoBehaviour
     [Header("KnockBack Info")]
     [SerializeField] protected Vector2 knockbackDir;
     [SerializeField] protected float knockbackDuration = .07f;
-    [SerializeField] protected float knockbackPower = 1.0f;    
+    //TODO - FIX Knockback power => This is actually used when receiving not giving
+    [SerializeField] public float knockbackPower = 1.0f;    
     public bool IsKnocked { get; protected set; }
 
     [Header("Collision Info")]
@@ -23,8 +24,6 @@ public class Entity : MonoBehaviour
 
     #endregion
 
-    private bool hasImmunity;
-
     public int FacingDir { get; private set; } = 1;
     protected bool facingRight = true;
 
@@ -32,7 +31,6 @@ public class Entity : MonoBehaviour
 
     public Animator Anim { get; private set; }
     public Rigidbody2D RB { get; private set; }
-    public EntityFX FX { get; private set; }
     public CharacterStats Stats { get; private set; }
     public CapsuleCollider2D CD { get; private set; }
 
@@ -46,7 +44,6 @@ public class Entity : MonoBehaviour
     // Use this for initialization
     protected virtual void Start()
     {
-        FX = GetComponent<EntityFX>();
         Anim = GetComponentInChildren<Animator>();
         RB = GetComponent<Rigidbody2D>();
         Stats = GetComponent<CharacterStats>();
@@ -54,16 +51,9 @@ public class Entity : MonoBehaviour
     }
 
     // Update is called once per frame
-    protected virtual void Update()
-    {
+    protected virtual void Update() { }
 
-    }
-
-    public virtual void DamageEffect()
-    {
-        FX.StartCoroutine("FlashFX");
-        StartCoroutine("HitKnockback");
-    }
+    public virtual void DamageImpact() => StartCoroutine("HitKnockback");
 
     protected virtual IEnumerator HitKnockback()
     {
@@ -125,25 +115,14 @@ public class Entity : MonoBehaviour
             Flip();
         }
     }
+
+    public virtual void SetupDefaultFacingDir(int _dir)
+    {
+        FacingDir = _dir;
+        if (FacingDir == -1)
+            facingRight = false;
+    }
     #endregion
 
-    #region Immunity
-
-    public void ToggleImmunity()
-    {
-        hasImmunity = !hasImmunity;
-    }
-
-    public bool HasImmunity()
-    {
-        return hasImmunity;
-    }
-
-    #endregion
-
-
-    public virtual void Die()
-    {
-
-    }
+    public virtual void Die() { }
 }

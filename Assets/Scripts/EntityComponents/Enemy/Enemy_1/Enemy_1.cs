@@ -36,11 +36,6 @@ public class Enemy_1 : Enemy
     protected override void Update()
     {
         base.Update();
-
-        if (Input.GetKeyDown(KeyCode.U))
-        {
-            StateMachine.ChangeState(StunnedState);
-        }
     }
 
     public override bool CanBeStunned()

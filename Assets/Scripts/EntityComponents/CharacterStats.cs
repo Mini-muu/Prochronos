@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class CharacterStats : MonoBehaviour
 {
+    private EntityFX fx;
+
     [Header("Stats")]
     public Stat maxHealth;
     public Stat maxStamina;
@@ -23,18 +25,20 @@ public class CharacterStats : MonoBehaviour
 
     public System.Action onStaminaChanged;
     //TODO - Apply
-    public System.Action onMaxStaminChanged;
+    public System.Action onMaxStaminaChanged;
+
+    public bool IsDead { get; private set; }
+    public bool IsInvicible {  get; private set; }
 
     protected virtual void Start()
     {
         currentHealth = GetMaxHealthValue();
         currentStamina = GetMaxStaminaValue();
+
+        fx = GetComponent<EntityFX>();
     }
 
-    protected virtual void Update()
-    {
-
-    }
+    protected virtual void Update() { }
 
     public virtual void DoDamage(CharacterStats _targetStats)
     {
@@ -48,6 +52,10 @@ public class CharacterStats : MonoBehaviour
         int totalDamage = strongDamage.GetValue();
 
         Damage(totalDamage, _targetStats);
+
+        Player player = _targetStats.gameObject.GetComponent<Player>();
+        if (!IsInvicible && player != null && _targetStats.currentHealth > 0)
+            player.StateMachine.ChangeState(player.KnockbackState);
     }
 
     private void Damage(int totalDamage, CharacterStats _targetStats)
@@ -67,7 +75,12 @@ public class CharacterStats : MonoBehaviour
 
     public virtual bool TryTakeDamage(int _damage)
     {
+        if (IsInvicible) return false;
+
         DecreaseHealthBy(_damage);
+
+        GetComponent<Entity>().DamageImpact();
+        fx.StartCoroutine("FlashFX");
 
         if (currentHealth <= 0)
         {
@@ -75,6 +88,17 @@ public class CharacterStats : MonoBehaviour
         }
 
         return true;
+    }
+
+    public virtual void IncreaseHealthBy(int _amount)
+    {
+        currentHealth += _amount;
+
+        if (currentHealth > GetMaxHealthValue())
+            currentHealth = GetMaxHealthValue();
+
+        if (onHealthChanged != null)
+            onHealthChanged();
     }
 
     protected virtual void DecreaseHealthBy(int _damage)
@@ -87,8 +111,16 @@ public class CharacterStats : MonoBehaviour
 
     protected virtual void Die()
     {
-
+        IsDead = true;
     }
+
+    public void KillEntity()
+    {
+        if (!IsDead)
+            Die();
+    }
+
+    public void MakeInvincible(bool _invincible) => IsInvicible = _invincible;
 
     public int GetMaxHealthValue()
     {

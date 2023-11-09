@@ -22,13 +22,20 @@ public class Enemy : Entity
     [HideInInspector] public float lastTimeAttack;
 
     public EnemyStateMachine StateMachine { get; private set; }
-
+    public EntityFX FX { get; private set; }
     public string LastAnimBolName { get; private set; }
 
     protected override void Awake()
     {
         base.Awake();
         StateMachine = new EnemyStateMachine();
+    }
+
+    protected override void Start()
+    {
+        base.Start();
+
+         FX = GetComponent<EntityFX>();
     }
 
     protected override void Update()
