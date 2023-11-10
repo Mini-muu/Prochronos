@@ -44,25 +44,39 @@ public class CharacterStats : MonoBehaviour
     {
         int totalDamage = damage.GetValue();
 
-        Damage(totalDamage, _targetStats);
+        bool hasBeenDamaged = Damage(totalDamage, _targetStats);
+
+        if(hasBeenDamaged)
+        {
+            Entity entity = _targetStats.gameObject.GetComponent<Entity>();
+            if(entity != null)
+            {
+                entity.OnLightHit();
+            }
+        }
     }
 
     public virtual void DoStrongDamage(CharacterStats _targetStats)
     {
         int totalDamage = strongDamage.GetValue();
 
-        Damage(totalDamage, _targetStats);
+        bool hasBeenDamaged = Damage(totalDamage, _targetStats);
 
-        Player player = _targetStats.gameObject.GetComponent<Player>();
-        if (!IsInvicible && player != null && _targetStats.currentHealth > 0)
-            player.StateMachine.ChangeState(player.KnockbackState);
+        if (hasBeenDamaged && _targetStats.currentHealth > 0)
+        {
+            Entity entity = _targetStats.gameObject.GetComponent<Entity>();
+            if (entity != null)
+            {
+                entity.OnHeavyHit();
+            }
+        }
     }
 
-    private void Damage(int totalDamage, CharacterStats _targetStats)
+    private bool Damage(int totalDamage, CharacterStats _targetStats)
     {
         totalDamage = CheckTargetArmor(_targetStats, totalDamage);
 
-        _targetStats.TryTakeDamage(totalDamage);
+        return _targetStats.TryTakeDamage(totalDamage);
     }
 
     private int CheckTargetArmor(CharacterStats _targetStats, int _totalDamage)
@@ -114,10 +128,19 @@ public class CharacterStats : MonoBehaviour
         IsDead = true;
     }
 
-    public void KillEntity()
+    /*public void KillEntity()
     {
         if (!IsDead)
             Die();
+    }*/
+
+    public void Resurrect()
+    {
+        if (IsDead)
+        {
+            IsDead = false;
+            currentHealth = GetMaxHealthValue();
+        }
     }
 
     public void MakeInvincible(bool _invincible) => IsInvicible = _invincible;

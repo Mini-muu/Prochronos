@@ -125,4 +125,8 @@ public class Entity : MonoBehaviour
     #endregion
 
     public virtual void Die() { }
+
+    public virtual void OnLightHit() { }
+
+    public virtual void OnHeavyHit() { }
 }

@@ -133,4 +133,9 @@ public class Player : Entity
         StateMachine.ChangeState(DeadState);
     }
 
+    public override void OnHeavyHit()
+    {
+        base.OnHeavyHit();
+        StateMachine.ChangeState(KnockbackState);
+    }
 }

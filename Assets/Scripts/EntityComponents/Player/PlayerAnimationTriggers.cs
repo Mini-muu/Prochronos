@@ -19,7 +19,7 @@ public class PlayerAnimationTriggers : MonoBehaviour
         PerformAttack(true);
     }
 
-    private void PerformAttack(bool isCharged)
+    private void PerformAttack(bool isChargedAttack)
     {
         Collider2D[] colliders = Physics2D.OverlapCircleAll(player.attackCheck.position, player.attackCheckRadius);
 
@@ -28,11 +28,21 @@ public class PlayerAnimationTriggers : MonoBehaviour
             if (hit.GetComponent<Enemy>() != null)
             {
                 EnemyStats target = hit.GetComponent<EnemyStats>();
-                if(isCharged)
-                    player.Stats.DoStrongDamage(target);
-                else
-                    player.Stats.DoDamage(target);
+                AttackTaget(isChargedAttack, target);
+            }
+            else if (hit.GetComponent<Dummy>() != null)
+            {
+                DummyStats target = hit.GetComponent<DummyStats>();
+                AttackTaget(isChargedAttack, target);
             }
         }
+    }
+
+    private void AttackTaget(bool isChargedAttack, CharacterStats target)
+    {
+        if (isChargedAttack)
+            player.Stats.DoStrongDamage(target);
+        else
+            player.Stats.DoDamage(target);
     }
 }
