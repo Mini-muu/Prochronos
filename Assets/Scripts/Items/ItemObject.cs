@@ -15,7 +15,16 @@ public class ItemObject : MonoBehaviour
     {
         if(collision.GetComponent<Player>() != null)
         {
-            Inventory.instance.AddItem(itemData);
+            if (itemData.itemType == ItemType.Equipment)
+            {
+                ItemData_Equipment equipment = itemData as ItemData_Equipment;
+                Inventory.instance.EquipItem(equipment);
+            }
+            else
+            {
+                Inventory.instance.AddItem(itemData);
+            }
+
             Destroy(gameObject);
         }
     }

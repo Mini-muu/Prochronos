@@ -20,9 +20,8 @@ public class PlayerStats : CharacterStats
 
     protected override void Die()
     {
-        base.Die();
-
         player.Die();
+        base.Die();
     }
 
     protected override void Update()

@@ -46,7 +46,7 @@ public class CharacterStats : MonoBehaviour
 
         bool hasBeenDamaged = Damage(totalDamage, _targetStats);
 
-        if(hasBeenDamaged)
+        if(hasBeenDamaged && _targetStats.currentHealth > 0)
         {
             Entity entity = _targetStats.gameObject.GetComponent<Entity>();
             if(entity != null)

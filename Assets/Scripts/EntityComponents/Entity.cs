@@ -6,11 +6,13 @@ public class Entity : MonoBehaviour
 {
     #region Infos
 
+    //TODO - Fix Knockback => better implementation
     [Header("KnockBack Info")]
     [SerializeField] protected Vector2 knockbackDir;
-    [SerializeField] protected float knockbackDuration = .07f;
+    public float knockbackDuration = .07f;
     //TODO - FIX Knockback power => This is actually used when receiving not giving
-    [SerializeField] public float knockbackPower = 1.0f;    
+    public float knockbackPower = 1.0f;    
+    public float OriginalKnockbackDuration { get; private set; }
     public bool IsKnocked { get; protected set; }
 
     [Header("Collision Info")]
@@ -48,12 +50,20 @@ public class Entity : MonoBehaviour
         RB = GetComponent<Rigidbody2D>();
         Stats = GetComponent<CharacterStats>();
         CD = GetComponent<CapsuleCollider2D>();
+
+        OriginalKnockbackDuration = knockbackDuration;
     }
 
     // Update is called once per frame
     protected virtual void Update() { }
 
     public virtual void DamageImpact() => StartCoroutine("HitKnockback");
+
+    public virtual void StopKnockback()
+    {
+        StopCoroutine("HitKnockbac");
+        IsKnocked = false;
+    }
 
     protected virtual IEnumerator HitKnockback()
     {
@@ -67,6 +77,7 @@ public class Entity : MonoBehaviour
     }
 
     #region Velocity
+
     public void SetZeroVelocity()
     {
         if (IsKnocked) return;
