@@ -14,6 +14,8 @@ public class PlayerState
     protected float stateTimer;
     protected bool triggerCalled;
 
+    protected PlayerAction action;
+
     public PlayerState(Player _player, PlayerStateMachine _stateMachine, string _animBoolName)
     {
         this.player = _player;
@@ -38,6 +40,8 @@ public class PlayerState
         yInput = Input.GetAxisRaw("Vertical");
         player.Anim.SetFloat("yVelocity", rb.velocity.y);
     }
+
+    public bool IsUnlocked() => PlayerManager.instance.unlockedActions.Contains(action);
 
     public virtual void Exit()
     {

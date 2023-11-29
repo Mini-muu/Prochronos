@@ -11,6 +11,8 @@ public class PlayerStateMachine
 
     public void ChangeState(PlayerState _newState)
     {
+        if (!_newState.IsUnlocked()) return;
+
         CurrentState.Exit();
         CurrentState = _newState;
         CurrentState.Enter();

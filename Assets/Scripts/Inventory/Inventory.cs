@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEditorInternal.Profiling.Memory.Experimental;
 using UnityEngine;
 
 public class Inventory : MonoBehaviour
@@ -6,7 +7,13 @@ public class Inventory : MonoBehaviour
     public static Inventory instance;
 
     public List<InventoryItem> inventoryItems;
-    public Dictionary<ItemData, InventoryItem> inventoryDictionary;
+   // public Dictionary<ItemData, InventoryItem> inventoryDictionary;
+
+    //
+      
+    public List<KeyValuePair<ItemData, InventoryItem>> inventoryItemsAlt;
+
+    //
 
     public List<InventoryItem> equipment;
     public Dictionary<ItemData_Equipment, InventoryItem> equipemntDictionary;
@@ -29,7 +36,8 @@ public class Inventory : MonoBehaviour
     private void Start()
     {
         inventoryItems = new List<InventoryItem>();
-        inventoryDictionary = new Dictionary<ItemData, InventoryItem>();
+        //inventoryDictionary = new Dictionary<ItemData, InventoryItem>();
+        inventoryItemsAlt = new List<KeyValuePair<ItemData, InventoryItem>>();
 
         equipment = new List<InventoryItem>();
         equipemntDictionary = new Dictionary<ItemData_Equipment, InventoryItem>();
@@ -71,7 +79,7 @@ public class Inventory : MonoBehaviour
 
     public void AddItem(ItemData _item)
     {
-        if (inventoryDictionary.TryGetValue(_item, out InventoryItem value))
+        /*if (!IsMeat(_item) && inventoryDictionary.TryGetValue(_item, out InventoryItem value))
         {
             value.AddStack();
         } else
@@ -79,20 +87,61 @@ public class Inventory : MonoBehaviour
             InventoryItem newItem = new InventoryItem(_item);
             inventoryItems.Add(newItem);
             inventoryDictionary.Add(_item, newItem);
+        }*/
+
+        if (!IsMeat(_item) && TryGetValue(_item, out InventoryItem value) != null)
+        {
+            value.AddStack();
+        } else
+        {
+            InventoryItem newItem = new InventoryItem(_item);
+            inventoryItems.Add(newItem);
+            inventoryItemsAlt.Add(new KeyValuePair<ItemData, InventoryItem>(_item, newItem));
         }
 
         UpdateSlotUI();
     }
 
+    public InventoryItem TryGetValue(ItemData key, out InventoryItem value)
+    {
+        value = null;
+
+        foreach(var itemPair in inventoryItemsAlt) {
+            if(itemPair.Key == key)
+            {
+                value = itemPair.Value;
+            }
+        }
+        return value;
+    }
+
+    private bool IsMeat(ItemData item)
+    {
+        return item.itemType == ItemType.Meat;
+    }
+
     public void RemoveItem(ItemData _item)
     {
-        if(inventoryDictionary.TryGetValue(_item,out InventoryItem value))
+        /*if(inventoryDictionary.TryGetValue(_item,out InventoryItem value) != null)
         {
             if(value.stackSize <= 0)
             {
                 inventoryItems.Remove(value);
                 inventoryDictionary.Remove(_item);
             } else
+            {
+                value.RemoveStack();
+            }
+        }*/
+
+        if(TryGetValue(_item, out InventoryItem value) != null)
+        {
+            if (value.stackSize <= 0)
+            {
+                inventoryItems.Remove(value);
+                inventoryItemsAlt.Remove(new KeyValuePair<ItemData, InventoryItem>(_item, value));
+            }
+            else
             {
                 value.RemoveStack();
             }

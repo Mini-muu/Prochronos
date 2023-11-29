@@ -2,6 +2,8 @@
 {
     private Dummy dummy;
 
+    bool hasDroppedBones;
+
     protected override void Start()
     {
         base.Start();
@@ -23,5 +25,11 @@
     {
         base.Die();
         dummy.Die();
+
+        if (!hasDroppedBones)
+        {
+            GetComponent<ItemDrop>().TutorialDropGenerator(true);
+            hasDroppedBones = true;
+        }
     }
 }

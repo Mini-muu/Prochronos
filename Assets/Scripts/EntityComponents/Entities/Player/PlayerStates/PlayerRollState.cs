@@ -7,6 +7,7 @@ public class PlayerRollState : PlayerState
     
     public PlayerRollState(Player _player, PlayerStateMachine _stateMachine, string _animBoolName) : base(_player, _stateMachine, _animBoolName)
     {
+        action = PlayerAction.Roll;
     }
 
     public override void Enter()

@@ -1,7 +1,11 @@
+using System;
 using UnityEngine;
 
 public class Dummy : Entity
 {
+    private bool hasDroppedMeat;
+    private int hitCounter;
+
     #region States
 
     public DummyStateMachine StateMachine { get; private set; }
@@ -50,11 +54,30 @@ public class Dummy : Entity
     {
         base.OnHeavyHit();
         StateMachine.ChangeState(HeavyHitState);
+
+        TryDropMeat();
     }
 
     public override void OnLightHit()
     {
         base.OnLightHit();
         StateMachine.ChangeState(LightHitState);
+        
+        TryDropMeat();
+    }
+
+    private void TryDropMeat()
+    {
+        hitCounter++;
+        if(hitCounter == 2 && !hasDroppedMeat)
+        {
+            GetComponent<ItemDrop>().TutorialDropGenerator(false);
+            hasDroppedMeat = true;
+        }
+    }
+
+    internal void Destroy()
+    {
+        Destroy(gameObject);
     }
 }

@@ -8,7 +8,7 @@ public class Entity : MonoBehaviour
 
     //TODO - Fix Knockback => better implementation
     [Header("KnockBack Info")]
-    [SerializeField] protected Vector2 knockbackDir;
+    public Vector2 knockbackDir;
     public float knockbackDuration = .07f;
     //TODO - FIX Knockback power => This is actually used when receiving not giving
     public float knockbackPower = 1.0f;    
@@ -23,6 +23,7 @@ public class Entity : MonoBehaviour
     [SerializeField] protected Transform wallCheck;
     [SerializeField] protected float wallCheckDistance;
     [SerializeField] protected LayerMask whatIsGround;
+    [SerializeField] protected string whatIsPlatform;
 
     #endregion
 
@@ -96,7 +97,11 @@ public class Entity : MonoBehaviour
 
     #region Collision
     public virtual bool IsGroundDetected() => Physics2D.Raycast(groundCheck.position, Vector2.down, groundCheckDistance, whatIsGround);
-    public virtual bool IsWallDetected() => Physics2D.Raycast(wallCheck.position, Vector2.right * FacingDir, wallCheckDistance, whatIsGround);
+    public virtual bool IsWallDetected()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(wallCheck.position, Vector2.right * FacingDir, wallCheckDistance, whatIsGround);
+        return hit && !hit.transform.CompareTag(whatIsPlatform);
+    }
 
     protected virtual void OnDrawGizmos()
     {

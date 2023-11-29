@@ -2,6 +2,7 @@
 {
     public PlayerWallJumpState(Player _player, PlayerStateMachine _stateMachine, string _animBoolName) : base(_player, _stateMachine, _animBoolName)
     {
+        action = PlayerAction.WallJump;
     }
 
     public override void Enter()
