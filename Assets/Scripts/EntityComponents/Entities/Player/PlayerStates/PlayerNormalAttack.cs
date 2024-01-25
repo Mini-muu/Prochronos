@@ -10,6 +10,7 @@ public class PlayerNormalAttack : PlayerState
 
     public PlayerNormalAttack(Player _player, PlayerStateMachine _stateMachine, string _animBoolName) : base(_player, _stateMachine, _animBoolName)
     {
+        action = PlayerAction.LightAttack;
     }
 
     public override void Enter()

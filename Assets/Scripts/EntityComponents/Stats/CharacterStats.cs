@@ -32,7 +32,7 @@ public class CharacterStats : MonoBehaviour
 
     protected virtual void Start()
     {
-        currentHealth = GetMaxHealthValue();
+        //currentHealth = GetMaxHealthValue();
         currentStamina = GetMaxStaminaValue();
 
         fx = GetComponent<EntityFX>();

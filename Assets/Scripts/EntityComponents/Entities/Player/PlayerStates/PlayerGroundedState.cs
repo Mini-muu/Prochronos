@@ -43,7 +43,7 @@ public class PlayerGroundedState : PlayerState
         if (Input.GetKeyDown(KeyCode.Space) && player.IsGroundDetected())
         {
             stateMachine.ChangeState(player.JumpState);
-            player.canDoubleJump = true;
+            player.canDoubleJump = PlayerManager.instance.unlockedActions.Contains(PlayerAction.DoubleJump);
         }
     }
 }

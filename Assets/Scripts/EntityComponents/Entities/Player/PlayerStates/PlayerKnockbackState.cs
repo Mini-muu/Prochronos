@@ -8,7 +8,7 @@
     {
         base.Enter();
         player.StartCoroutine("BusyFor", player.knockbackDuration);
-        stateTimer = .015f;
+        stateTimer = .25f;
     }
 
     public override void Exit()
@@ -16,6 +16,7 @@
         base.Exit();
         player.knockbackPower = 1;
         player.knockbackDuration = player.OriginalKnockbackDuration;
+        player.knockbackDir = new UnityEngine.Vector2(5f, 3f);
     }
 
     public override void Update()
@@ -27,7 +28,7 @@
             stateMachine.ChangeState(player.AirState);
         }
 
-        if(stateTimer < 0 && (player.IsWallDetected()  || player.IsGroundDetected())) 
+        if(stateTimer < 0 && (player.IsWallDetected() || player.IsGroundDetected())) 
         {
             player.StopKnockback();
         }

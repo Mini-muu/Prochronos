@@ -4,6 +4,7 @@ public class PlayerParryState : PlayerState
 {
     public PlayerParryState(Player _player, PlayerStateMachine _stateMachine, string _animBoolName) : base(_player, _stateMachine, _animBoolName)
     {
+        action = PlayerAction.Parry;
     }
 
     public override void Enter()

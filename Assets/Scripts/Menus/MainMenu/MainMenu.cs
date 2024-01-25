@@ -17,7 +17,7 @@ public class MainMenu : MonoBehaviour
     {
         // Open an existing file, or create a new one.
         fi = new FileInfo("MainMenu.cs");
-        Debug.Log("Game directory: " + fi.DirectoryName);
+        // Debug.Log("Game directory: " + fi.DirectoryName);
         path = (fi.DirectoryName + @"\Assets\Data\saveData.txt");
         if (File.Exists(path))
         {
@@ -27,11 +27,13 @@ public class MainMenu : MonoBehaviour
 
     public void PlayGame()
     {
-        SceneManager.LoadScene("VideoScene");
-        if (File.Exists(path) == false)
-        {
-            createFile();
-        }
+        //TEMP DISABLED -> Loading Tutorial
+        //SceneManager.LoadScene("VideoScene");
+        //if (File.Exists(path) == false)
+        //{
+        //    createFile();
+        //}
+        SceneManager.LoadScene("Tutorial");
     }
 
     private static void createFile() {

@@ -1,0 +1,30 @@
+- [Class Name] - TODO thing
+//Some TODO are commented in various file -> CTRL + F -> Search for "//TODO" -> Find all references
+
+List:
+- [Player.cs] - Fix Dead State
+- [PlayerChargedAttack.cs] - Finish Charged Attack (check GDD & comments)
+- [Entity.cs] - Fix Knockback (need better implementation, right now is the "receiving" knock)
+- [CharacterStats.cs] - onMaxStaminaChanged & onMaxHealthChanged need implementation
+- [LocaleSelector.cs] - Finish Language Selection -> Check commented video
+- [BonesData.cs] - (This is a temporary Class) Currency, create it, apply as enemy drop + random gen and modifier influence, store player current currecny value, increase and decrease values
+- [BrightnessSettings.cs] - Need better Brightness Implementation
+- [UI_PlayerHealthBar_---.cs] - Check which one is better
+- [] - Add Save Data -> Check Udemy Course (GameData.cs class, and something else useful is in it)
+- [] - In Menu add Input Settings
+- [] - Complete Saved Game Menu
+- [] - Complete Menu Animations
+- [] - Write Translable Sentences
+- [] - Shop
+- [] - Merchant
+- [Dummy.cs] Edit Death -> Remove on death + remove resurrection animation
+- [] - Signs + Baloons Tutorial (????)
+
+- [!] - Reorganise Folders & Files
+
+
+
+Problematic List:
+- [!!!] - Memory Leak -> Possible cause: Animations or PostProcessor (still investigating) s-> Checking Memory Profiler or Trial & Error
+- [ControlOptions.cs] - Needs better implementation, probably delete -> FOR COMMANDS USE NEW INPUT SYSTEM -> Adapt Player Scripts input to New Input System
+- [] - Fix Item Inventory & usage -> problems on Usage and Storing Unique Items 

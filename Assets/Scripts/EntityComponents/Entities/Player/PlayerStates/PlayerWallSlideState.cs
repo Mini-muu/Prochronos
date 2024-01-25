@@ -4,6 +4,7 @@ public class PlayerWallSlideState : PlayerState
 {
     public PlayerWallSlideState(Player _player, PlayerStateMachine _stateMachine, string _animBoolName) : base(_player, _stateMachine, _animBoolName)
     {
+        action = PlayerAction.WallSlide;
     }
 
     public override void Enter()
