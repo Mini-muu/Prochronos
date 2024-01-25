@@ -1,22 +1,21 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlatformPassThorugh : MonoBehaviour
 {
-    private Collider2D collider;
+    private Collider2D _collider;
     private bool isPlayerOnPlatform;
 
     private void Start()
     {
-        collider = GetComponent<Collider2D>();
+        _collider = GetComponent<Collider2D>();
     }
 
     private void Update()
     {
         if(isPlayerOnPlatform && Input.GetAxisRaw("Vertical") < 0 && IsPassThroughUnlocked())
         {
-            collider.enabled = false;
+            _collider.enabled = false;
             StartCoroutine(EnableCollider());
         }
     }
@@ -26,7 +25,7 @@ public class PlatformPassThorugh : MonoBehaviour
     private IEnumerator EnableCollider()
     {
         yield return new WaitForSeconds(0.5f);
-        collider.enabled = true;
+        _collider.enabled = true;
     }
 
     private void SetPlayerOnPlatoform(Collision2D _collision, bool value)

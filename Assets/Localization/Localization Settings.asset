@@ -26,8 +26,8 @@ MonoBehaviour:
     m_Items: []
   m_ProjectLocaleIdentifier:
     m_Code: en
-  m_PreloadBehavior: 1
-  m_InitializeSynchronously: 0
+  m_PreloadBehavior: 3
+  m_InitializeSynchronously: 1
   references:
     version: 2
     RefIds:
@@ -57,7 +57,7 @@ MonoBehaviour:
           rid: -2
         m_CustomTablePostprocessor:
           rid: -2
-        m_UseFallback: 0
+        m_UseFallback: 1
     - rid: 2404241169968005125
       type: {class: LocalizedStringDatabase, ns: UnityEngine.Localization.Settings, asm: Unity.Localization}
       data:

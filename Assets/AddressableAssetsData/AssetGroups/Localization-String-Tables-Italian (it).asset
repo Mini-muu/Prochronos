@@ -18,11 +18,41 @@ MonoBehaviour:
   m_GUID: 3107cc5bb8accc04e89fdd03654be98e
   m_SerializeEntries:
   - m_GUID: da48c74e5c2176849ba26c471df6d7a8
-    m_Address: StringTestTaable_it
+    m_Address: MainMenu_it
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-it
     - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4c4e29604f8f98d4fbb57659d07ac8f5
+    m_Address: NewGameMenu_it
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-it
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 90e0519c8db156040ae1f593d6955b04
+    m_Address: SavedGameMenu_it
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-it
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ba66b5501b7d9324383ff31a0478ff4f
+    m_Address: OptionsMenu_it
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-it
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 810bbb4a3593e05429c3b8c6e139fe6b
+    m_Address: AudioSettings_it
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-it
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f7b490a2f8daf154aba4c320ed0a6042
+    m_Address: GraphicsSettings_it
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-it
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: 1b2bb30c08654144a8f167c747a7f0f4, type: 2}

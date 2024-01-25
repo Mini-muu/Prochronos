@@ -22,6 +22,33 @@ MonoBehaviour:
     m_ReadOnly: 1
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 593ad3dc05c14114c9ed74ba68fd0e46
+    m_Address: Assets/Localization/Table/NewGameMenu Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d50f194fbf9887f4b9e0beb12332b52e
+    m_Address: Assets/Localization/Table/SavedGameMenu Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 04a6d758b5f60ca4fa53fcf225342ab6
+    m_Address: Assets/Localization/Table/OptionsMenu Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0cd9eee48b671864e836ef32a69104c4
+    m_Address: Assets/Localization/Table/Menu/OptionsMenu/AudioSettings/AudioSettings
+      Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5ee974c518c989b458520c94b4d6e18a
+    m_Address: Assets/Localization/Table/Menu/OptionsMenu/GraphicsSettings/GraphicsSettings
+      Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: 1b2bb30c08654144a8f167c747a7f0f4, type: 2}
   m_SchemaSet:
