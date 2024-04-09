@@ -2,7 +2,7 @@
 using TMPro;
 using UnityEngine;
 
-public class PlayerManager : MonoBehaviour
+public class PlayerManager : MonoBehaviour, ISaveManager
 {
     public static PlayerManager instance;
     public PlayerStats playerStats;
@@ -45,5 +45,15 @@ public class PlayerManager : MonoBehaviour
     private void UpdateBonesUI()
     {
         bonesAmountText.text = $"{playerBones}";
+    }
+
+    public void LoadData(GameData data)
+    {
+        Debug.LogWarning("Not Implemented Loader");
+    }
+
+    public void SaveData(ref GameData _data)
+    {
+        Debug.LogWarning("Not Implemented Saver");
     }
 }

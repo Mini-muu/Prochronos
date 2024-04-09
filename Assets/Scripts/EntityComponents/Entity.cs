@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using UnityEditor.Build.Pipeline;
 using UnityEngine;
 
 
@@ -58,11 +59,14 @@ public class Entity : MonoBehaviour
     // Update is called once per frame
     protected virtual void Update() { }
 
-    public virtual void DamageImpact() => StartCoroutine("HitKnockback");
-
+    public virtual void DamageImpact()
+    {
+        if (!RB.bodyType.Equals(RigidbodyType2D.Static))
+            StartCoroutine("HitKnockback");
+    }
     public virtual void StopKnockback()
     {
-        StopCoroutine("HitKnockbac");
+        StopCoroutine("HitKnockback");
         IsKnocked = false;
     }
 

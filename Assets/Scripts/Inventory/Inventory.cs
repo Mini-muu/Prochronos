@@ -134,6 +134,8 @@ public class Inventory : MonoBehaviour
             }
         }*/
 
+        Debug.Log(_item.GetInstanceID());
+
         if(TryGetValue(_item, out InventoryItem value) != null)
         {
             if (value.stackSize <= 0)
