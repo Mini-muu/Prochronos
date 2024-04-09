@@ -29,4 +29,14 @@ public class UI_ItemSlot : MonoBehaviour
             }
         }
     }
+
+    public void CleanUpSlot()
+    {
+        item = null;
+
+        itemImage.sprite = null;
+        itemImage.color = Color.clear;
+        itemText.text = "";
+    }
+
 }

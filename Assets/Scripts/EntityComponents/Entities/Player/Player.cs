@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 //Check PJudge
@@ -92,35 +93,32 @@ public class Player : Entity
         StateMachine.CurrentState.Update();
 
         CheckForRollInput();
-
+        
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            ItemData item = Inventory.instance.inventoryItemsAlt[0].Key;
-            if (item != null)
-            {
-                item.ExecuteItemEffects();
-                Inventory.instance.RemoveItem(item);
-            }
+            TryUseItem(0);
         }
 
-        if(Input.GetKeyDown(KeyCode.Alpha2))
+        if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            ItemData item = Inventory.instance.inventoryItemsAlt[1].Key;
-            if (item != null)
-            {
-                item.ExecuteItemEffects();
-                Inventory.instance.RemoveItem(item);
-            }
+            TryUseItem(1);
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            ItemData item = Inventory.instance.inventoryItemsAlt[2].Key;
-            if (item != null)
-            {
-                item.ExecuteItemEffects();
-                Inventory.instance.RemoveItem(item);
-            }
+            TryUseItem(2);
+        }
+    }
+
+    private static void TryUseItem(int slot)
+    {
+        if (Inventory.instance.inventoryItemsAlt.Count < slot+1) return;
+
+        ItemData item = Inventory.instance.inventoryItemsAlt[slot].Key;
+        if (item != null)
+        {
+            item.ExecuteItemEffects();
+            Inventory.instance.RemoveItem(item);
         }
     }
 

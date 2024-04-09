@@ -47,7 +47,12 @@ public class Inventory : MonoBehaviour
 
     private void UpdateSlotUI()
     {
-        for(int i = 0; i < inventoryItems.Count; i++)
+        for (int i = 0; i < inventoryItemSlot.Length; i++)
+        {
+            inventoryItemSlot[i].CleanUpSlot();
+        }
+
+        for (int i = 0; i < inventoryItems.Count; i++)
         {
             inventoryItemSlot[i].UpdateSlot(inventoryItems[i]);
         }
@@ -138,7 +143,7 @@ public class Inventory : MonoBehaviour
 
         if(TryGetValue(_item, out InventoryItem value) != null)
         {
-            if (value.stackSize <= 0)
+            if (value.stackSize <= 1)
             {
                 inventoryItems.Remove(value);
                 inventoryItemsAlt.Remove(new KeyValuePair<ItemData, InventoryItem>(_item, value));
