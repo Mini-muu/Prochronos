@@ -15,24 +15,24 @@ MonoBehaviour:
   m_TableCollectionName: MainMenu
   m_TableCollectionNameGuidString: 1eeabd9141bd98f4893b839aa69ef64f
   m_Entries:
-  - m_Id: 1533390315520
-    m_Key: PressAnyKey
-    m_Metadata:
-      m_Items: []
-  - m_Id: 3013752021540864
-    m_Key: NewGame
+  - m_Id: 3013882250485760
+    m_Key: Credits
     m_Metadata:
       m_Items: []
   - m_Id: 3013840999505920
     m_Key: LoadGame
     m_Metadata:
       m_Items: []
+  - m_Id: 3013752021540864
+    m_Key: NewGame
+    m_Metadata:
+      m_Items: []
   - m_Id: 3013862193324032
     m_Key: Options
     m_Metadata:
       m_Items: []
-  - m_Id: 3013882250485760
-    m_Key: Credits
+  - m_Id: 1533390315520
+    m_Key: PressAnyKey
     m_Metadata:
       m_Items: []
   - m_Id: 3013902672551936

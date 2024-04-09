@@ -29,30 +29,35 @@ MonoBehaviour:
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-en
+    - Preload
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 343eac3d5f06d9c46997013a791caff2
     m_Address: SavedGameMenu_en
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-en
+    - Preload
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9be402116180b524a8f84e2926e8c33d
     m_Address: OptionsMenu_en
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-en
+    - Preload
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: da93bcf9114afb946a0ec193822d0bcc
     m_Address: AudioSettings_en
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-en
+    - Preload
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 6b7d1257f667d654da2d5d7641b3b09b
     m_Address: GraphicsSettings_en
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-en
+    - Preload
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: 1b2bb30c08654144a8f167c747a7f0f4, type: 2}

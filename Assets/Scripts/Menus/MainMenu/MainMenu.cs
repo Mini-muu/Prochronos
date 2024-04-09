@@ -9,7 +9,7 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private GameObject mainMenu;
     /*[SerializeField] private GameObject savesMenu;
     [SerializeField] private TextMeshProUGUI loadGameText;*/
-    private static string path;
+   /* private static string path;
     private static FileInfo fi;
     [SerializeField, Tooltip("This parameter allow the script to delete the file with the saved data (used for test).")] private bool deleteFileQuit = false;
 
@@ -23,7 +23,7 @@ public class MainMenu : MonoBehaviour
         {
             //loadGameText.color = Color.white;
         }
-    }
+    }*/
 
     public void PlayGame()
     {
@@ -36,18 +36,18 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene("Tutorial");
     }
 
-    private static void createFile() {
+    /*private static void createFile() {
         // Determine the full path of the file just created.
         //DirectoryInfo di = fi.Directory;
         // Figure out what other entries are in that directory.
         //FileSystemInfo[] fsi = di.GetFileSystemInfos();
 
         try {
-            /* //This code will create a new file in "<user>\AppData\Local\Temp"
-            string path = Path.GetTempFileName();
-            var fi1 = new FileInfo(path);
-            Debug.Log(path + " " + fi1.FullName);
-            */
+            //This code will create a new file in "<user>\AppData\Local\Temp"
+            //string path = Path.GetTempFileName();
+            //var fi1 = new FileInfo(path);
+            //Debug.Log(path + " " + fi1.FullName);
+            
 
             //FileStream f;
             var f = new FileInfo(path);
@@ -60,11 +60,11 @@ public class MainMenu : MonoBehaviour
             {
                 Debug.Log("File is created.");
                 //f = File.Open(path, FileMode.Open);
-                /*StreamWriter sw = f.CreateText();
-                sw.WriteLine("Hello");
-                sw.WriteLine("And");
-                sw.WriteLine("Welcome");
-                sw.Close();*/
+                //StreamWriter sw = f.CreateText();
+                //sw.WriteLine("Hello");
+                //sw.WriteLine("And");
+                //sw.WriteLine("Welcome");
+                //sw.Close();
             }
             else
             {
@@ -105,14 +105,14 @@ public class MainMenu : MonoBehaviour
             //savesMenu.SetActive(true);
             mainMenu.SetActive(false);
         }
-    }
+    }*/
 
     public void QuitGame()
     {
-        if (deleteFileQuit)
-        {
-            deleteFile();
-        }
+        //if (deleteFileQuit)
+        //{
+        //    deleteFile();
+        //}
         PlayerPrefs.SetInt("played", 0);
         //Conditional compilation
         #if UNITY_EDITOR

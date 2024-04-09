@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10c6c18a84b5b444b83a57edd38bc3cc, type: 3}
   m_Name: Meat
   m_EditorClassIdentifier: 
-  itemType: 1
+  itemType: 2
   itemName: Meat
   icon: {fileID: 8989384381960519552, guid: b955ea65ecb1f3644bb93f9c680ad536, type: 3}
+  dropChance: 0
   itemEffects:
   - {fileID: 11400000, guid: f1646617970735e4ba5a41d88820041a, type: 2}
