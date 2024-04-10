@@ -23,6 +23,8 @@
         if (player.IsGroundDetected() /*|| player.IsWallDetected()*/)
             player.SetZeroVelocity();
 
+        PlayerManager.instance.ClearUnlockedActions();
+
         /*if (triggerCalled && player.IsGroundDetected())
         {
             player.SetZeroVelocity();

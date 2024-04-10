@@ -56,4 +56,6 @@ public class PlayerManager : MonoBehaviour, ISaveManager
     {
         Debug.LogWarning("Not Implemented Saver");
     }
+
+    public void ClearUnlockedActions() => unlockedActions.Clear();
 }
