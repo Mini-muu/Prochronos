@@ -6789,7 +6789,7 @@ MonoBehaviour:
   playerStats: {fileID: 1892784593}
   player: {fileID: 1892784591}
   bonesAmountText: {fileID: 1233517809}
-  unlockedActions: 
+  unlockedActions: 00000000010000000b00000005000000040000000a00000003000000
 --- !u!4 &629120105
 Transform:
   m_ObjectHideFlags: 0

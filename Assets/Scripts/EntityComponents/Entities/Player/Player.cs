@@ -93,14 +93,18 @@ public class Player : Entity
 
         CheckForRollInput();
 
+        if (Inventory.instance.inventoryItemsAlt.Count < 1) return;
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             ItemData item = Inventory.instance.inventoryItemsAlt[0].Key;
+            Debug.Log($"Not null: {item != null}");
             if (item != null)
             {
+                Debug.Log($"{item}");
                 item.ExecuteItemEffects();
                 Inventory.instance.RemoveItem(item);
             }
+            
         }
 
         if(Input.GetKeyDown(KeyCode.Alpha2))

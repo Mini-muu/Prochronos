@@ -7,26 +7,42 @@ public class UI_ItemSlot : MonoBehaviour
     [SerializeField] private Image itemImage;
     [SerializeField] private TextMeshProUGUI itemText;
 
-    public InventoryItem item;
+    public InventoryItem item = null;
 
     public void UpdateSlot(InventoryItem _newItem)
     {
-        item = _newItem;
-
-        itemImage.color = Color.white;
-
-        if (item != null)
+        if (_newItem.stackSize <= 0)
         {
-            itemImage.sprite = item.data.icon;
+            itemImage.color = Color.clear;
+            Debug.Log($"Stack Lenght {_newItem.stackSize}");
+        }
+        else
+        {
+            Debug.Log($"Stack Lenght UI {_newItem.stackSize}");
 
-            if (item.stackSize > 1)
+            item = _newItem;
+
+            itemImage.color = Color.white;
+
+            if (item != null)
             {
-                itemText.text = item.stackSize.ToString();
-            }
-            else
-            {
-                itemText.text = "";
+                itemImage.sprite = item.data.icon;
+
+                if (item.stackSize > 1)
+                {
+                    itemText.text = item.stackSize.ToString();
+                }
+                else
+                {
+                    itemText.text = "";
+                }
             }
         }
     }
+
+    public void UpdateSlot()
+    {
+        itemImage.color = Color.clear;
+    }
+
 }

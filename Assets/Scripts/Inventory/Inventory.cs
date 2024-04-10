@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditorInternal.Profiling.Memory.Experimental;
 using UnityEngine;
 
@@ -47,9 +48,21 @@ public class Inventory : MonoBehaviour
 
     private void UpdateSlotUI()
     {
-        for(int i = 0; i < inventoryItems.Count; i++)
+        for (int i = 0; i < 3; i++)
         {
-            inventoryItemSlot[i].UpdateSlot(inventoryItems[i]);
+            Debug.Log("Entrato nel for");
+            if (!inventoryItems[i].IsUnityNull())
+            {
+                Debug.Log("Entrato not Null");
+                inventoryItemSlot[i].UpdateSlot(inventoryItems[i]);
+                Debug.Log("Uscito not Null");
+            }
+            else
+            {
+                Debug.Log("Entrato Null");
+                inventoryItemSlot[i].UpdateSlot();
+                Debug.Log("Uscito Null");
+            }
         }
     }
 
@@ -98,7 +111,7 @@ public class Inventory : MonoBehaviour
             inventoryItems.Add(newItem);
             inventoryItemsAlt.Add(new KeyValuePair<ItemData, InventoryItem>(_item, newItem));
         }
-
+        Debug.Log("Item Added");
         UpdateSlotUI();
     }
 
@@ -134,18 +147,17 @@ public class Inventory : MonoBehaviour
             }
         }*/
 
-        Debug.Log(_item.GetInstanceID());
+        Debug.Log("ItemID: " + _item.GetInstanceID());
 
         if(TryGetValue(_item, out InventoryItem value) != null)
         {
+            Debug.Log("Stack pre remove " + value.stackSize);
+            value.RemoveStack();
+            Debug.Log("Stack post remove " + value.stackSize);
             if (value.stackSize <= 0)
             {
                 inventoryItems.Remove(value);
                 inventoryItemsAlt.Remove(new KeyValuePair<ItemData, InventoryItem>(_item, value));
-            }
-            else
-            {
-                value.RemoveStack();
             }
         }
 
