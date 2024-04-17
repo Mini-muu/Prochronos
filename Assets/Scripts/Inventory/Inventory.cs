@@ -1,8 +1,8 @@
 using System.Collections.Generic;
-using UnityEditorInternal.Profiling.Memory.Experimental;
+using UnityEditor;
 using UnityEngine;
 
-public class Inventory : MonoBehaviour
+public class Inventory : MonoBehaviour, ISaveManager
 {
     public static Inventory instance;
 
@@ -21,6 +21,11 @@ public class Inventory : MonoBehaviour
     [Header("Inventory UI")]
     [SerializeField] private Transform inventorySlotParent;
     private UI_ItemSlot[] inventoryItemSlot;
+
+    [Header("Data base")]
+    public List<ItemData> itemDataBase;
+    public List<InventoryItem> loadedItems;
+    public List<ItemData_Equipment> loadedEquipment;
 
     private void Awake()
     {
@@ -84,16 +89,6 @@ public class Inventory : MonoBehaviour
 
     public void AddItem(ItemData _item)
     {
-        /*if (!IsMeat(_item) && inventoryDictionary.TryGetValue(_item, out InventoryItem value))
-        {
-            value.AddStack();
-        } else
-        {
-            InventoryItem newItem = new InventoryItem(_item);
-            inventoryItems.Add(newItem);
-            inventoryDictionary.Add(_item, newItem);
-        }*/
-
         if (!IsMeat(_item) && TryGetValue(_item, out InventoryItem value) != null)
         {
             value.AddStack();
@@ -127,20 +122,6 @@ public class Inventory : MonoBehaviour
 
     public void RemoveItem(ItemData _item)
     {
-        /*if(inventoryDictionary.TryGetValue(_item,out InventoryItem value) != null)
-        {
-            if(value.stackSize <= 0)
-            {
-                inventoryItems.Remove(value);
-                inventoryDictionary.Remove(_item);
-            } else
-            {
-                value.RemoveStack();
-            }
-        }*/
-
-        Debug.Log(_item.GetInstanceID());
-
         if(TryGetValue(_item, out InventoryItem value) != null)
         {
             if (value.stackSize <= 1)
@@ -156,4 +137,51 @@ public class Inventory : MonoBehaviour
 
         UpdateSlotUI();
     }
+
+    public void LoadData(GameData _data)
+    {
+        foreach (KeyValuePair<string, int> pair in _data.inventory)
+        {
+            foreach (var item in itemDataBase)
+            {
+                if (item != null && item.itemId == pair.Key)
+                {
+                    InventoryItem itemToLoad = new InventoryItem(item);
+                    itemToLoad.stackSize = pair.Value;
+
+                    loadedItems.Add(itemToLoad);
+                }
+            }
+        }
+    }
+
+    public void SaveData(ref GameData _data)
+    {
+        _data.inventory.Clear();
+
+        foreach (KeyValuePair<ItemData, InventoryItem> pair in inventoryItemsAlt)
+        {
+            _data.inventory.Add(pair.Key.itemId, pair.Value.stackSize);
+        }
+    }
+
+#if UNITY_EDITOR
+    [ContextMenu("Fill up item data base")]
+    private void FillUpItemDataBase() => itemDataBase = new List<ItemData>(GetItemDataBase());
+
+    private List<ItemData> GetItemDataBase()
+    {
+        List<ItemData> itemDataBase = new List<ItemData>();
+        string[] assetNames = AssetDatabase.FindAssets("", new[] { "Assets/ScriptableObjects/Items" });
+
+        foreach (string SOName in assetNames)
+        {
+            var SOpath = AssetDatabase.GUIDToAssetPath(SOName);
+            var itemData = AssetDatabase.LoadAssetAtPath<ItemData>(SOpath);
+            itemDataBase.Add(itemData);
+        }
+
+        return itemDataBase;
+    }
+#endif
 }
