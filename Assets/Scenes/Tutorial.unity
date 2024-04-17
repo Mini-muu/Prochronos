@@ -6767,6 +6767,7 @@ GameObject:
   m_Component:
   - component: {fileID: 629120105}
   - component: {fileID: 629120104}
+  - component: {fileID: 629120106}
   m_Layer: 0
   m_Name: PlayerManager
   m_TagString: Untagged
@@ -6788,7 +6789,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerStats: {fileID: 1892784593}
   player: {fileID: 1892784591}
-  bonesAmountText: {fileID: 1233517809}
+  wallet: {fileID: 0}
   unlockedActions: 00000000010000000b00000005000000040000000a00000003000000
 --- !u!4 &629120105
 Transform:
@@ -6805,6 +6806,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &629120106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 629120101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dbc30b73f630cf4789baa6a8d14e683, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentBonesAmount: 0
+  maxBonesAmount: 0
+  bonesAmountText: {fileID: 1233517809}
 --- !u!1 &646605556
 GameObject:
   m_ObjectHideFlags: 0

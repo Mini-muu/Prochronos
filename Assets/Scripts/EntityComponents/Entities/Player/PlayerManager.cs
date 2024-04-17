@@ -7,11 +7,9 @@ public class PlayerManager : MonoBehaviour, ISaveManager
     public static PlayerManager instance;
     public PlayerStats playerStats;
     public Player player;
-    private int playerBones;
-    [SerializeField] private TextMeshProUGUI bonesAmountText;
+    public Wallet wallet;
 
     public List<PlayerAction> unlockedActions;
-
 
     private void Awake()
     {
@@ -27,24 +25,8 @@ public class PlayerManager : MonoBehaviour, ISaveManager
 
     private void Start()
     {
-        UpdateBonesUI();
-    }
-
-    public void IncreaseAmountBy(int _amount)
-    {
-        playerBones += _amount;
-        UpdateBonesUI();
-    }
-
-    public void DecreaseAmountBy(int _amount)
-    {
-        playerBones -= _amount;
-        UpdateBonesUI();
-    }
-
-    private void UpdateBonesUI()
-    {
-        bonesAmountText.text = $"{playerBones}";
+        wallet = GetComponent<Wallet>();
+        wallet.UpdateBonesUI();
     }
 
     public void LoadData(GameData data)

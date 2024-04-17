@@ -29,7 +29,7 @@ public class ItemObject : MonoBehaviour
         else if (itemData.itemType == ItemType.Bones)
         {
             BonesData bones = itemData as BonesData;
-            PlayerManager.instance.IncreaseAmountBy(bones.amount);
+            PlayerManager.instance.wallet.IncreaseAmountBy(bones.amount);
         } else
         {
             Inventory.instance.AddItem(itemData);
