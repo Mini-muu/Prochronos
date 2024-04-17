@@ -66,7 +66,7 @@ public class Player : Entity
 
         IdleState = new PlayerIdleState(this, StateMachine, "Idle");
         MoveState = new PlayerMoveState(this, StateMachine, "Move");
-        RunState = new PlayerRunState(this, StateMachine, "Run");
+        //RunState = new PlayerRunState(this, StateMachine, "Run");
         JumpState = new PlayerJumpState(this, StateMachine, "Jump");
         AirState = new PlayerAirState(this, StateMachine, "Jump");
         RollState = new PlayerRollState(this, StateMachine, "Roll");

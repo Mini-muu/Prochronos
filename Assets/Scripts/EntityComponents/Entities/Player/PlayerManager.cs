@@ -25,7 +25,6 @@ public class PlayerManager : MonoBehaviour, ISaveManager
 
     private void Start()
     {
-        wallet = GetComponent<Wallet>();
         wallet.UpdateBonesUI();
     }
 

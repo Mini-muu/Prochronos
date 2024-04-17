@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEditorInternal.Profiling.Memory.Experimental;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Wallet : MonoBehaviour
 {
     [SerializeField] public int currentBonesAmount;
     [SerializeField] public int maxBonesAmount;
+    [SerializeField] private Image itemImage;
     [SerializeField] private TextMeshProUGUI bonesAmountText;
 
     public void IncreaseAmountBy(int amount)
