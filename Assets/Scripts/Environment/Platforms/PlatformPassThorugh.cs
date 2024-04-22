@@ -13,7 +13,7 @@ public class PlatformPassThorugh : MonoBehaviour
 
     private void Update()
     {
-        if(isPlayerOnPlatform && Input.GetAxisRaw("Vertical") < 0 && IsPassThroughUnlocked())
+        if(isPlayerOnPlatform && PlayerInputManager.instance.move.ReadValue<Vector2>().y < 0 && IsPassThroughUnlocked())
         {
             _collider.enabled = false;
             StartCoroutine(EnableCollider());

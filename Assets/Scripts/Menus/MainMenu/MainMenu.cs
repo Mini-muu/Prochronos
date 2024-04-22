@@ -36,6 +36,10 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene("Tutorial");
     }
 
+    public void StartDemo() => SceneManager.LoadScene("DemoTutorial");
+
+    public void StartDemoBossFight() => SceneManager.LoadScene("DemoBossRoom");
+
     /*private static void createFile() {
         // Determine the full path of the file just created.
         //DirectoryInfo di = fi.Directory;
@@ -113,7 +117,7 @@ public class MainMenu : MonoBehaviour
         //{
         //    deleteFile();
         //}
-        PlayerPrefs.SetInt("played", 0);
+
         //Conditional compilation
         #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;

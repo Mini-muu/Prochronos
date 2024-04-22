@@ -14,10 +14,10 @@ public class IntroVideo : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Return))
+        /*if (Input.GetKeyDown(KeyCode.Return))
         {
             SkipVideo();
-        }
+        }*/
     }
 
     private void VideoFinished(VideoPlayer source)

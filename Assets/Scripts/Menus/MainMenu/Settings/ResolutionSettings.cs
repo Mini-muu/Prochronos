@@ -54,5 +54,6 @@ public class ResolutionOptions : MonoBehaviour
     {
         int selectedResolutionIndex = resolutionDropdown.value;
         SetResolution(selectedResolutionIndex);
+        PlayerPrefs.Save();
     }
 }

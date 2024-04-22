@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 //Check PJudge
 public class Player : Entity
@@ -66,7 +67,7 @@ public class Player : Entity
 
         IdleState = new PlayerIdleState(this, StateMachine, "Idle");
         MoveState = new PlayerMoveState(this, StateMachine, "Move");
-        //RunState = new PlayerRunState(this, StateMachine, "Run");
+        RunState = new PlayerRunState(this, StateMachine, "Run");
         JumpState = new PlayerJumpState(this, StateMachine, "Jump");
         AirState = new PlayerAirState(this, StateMachine, "Jump");
         RollState = new PlayerRollState(this, StateMachine, "Roll");
@@ -76,7 +77,7 @@ public class Player : Entity
         ChargedAttackState = new PlayerChargedAttack(this, StateMachine, "ChargedAttack");
         ParryState = new PlayerParryState(this, StateMachine, "Parry");
         KnockbackState = new PlayerKnockbackState(this, StateMachine, "Hurt");
-        //TODO - Fix Dead State
+
         DeadState = new PlayerDeadState(this, StateMachine, "Die");
     }
 
@@ -85,6 +86,7 @@ public class Player : Entity
         base.Start();
         StateMachine.Initialize(IdleState);
         skill = SkillManager.instance;
+        PlayerInputManager.instance.roll.performed += CheckForRollInput;
     }
 
     protected override void Update()
@@ -92,9 +94,9 @@ public class Player : Entity
         base.Update();
         StateMachine.CurrentState.Update();
 
-        CheckForRollInput();
+        //CheckForRollInput();
         
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        /*if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             TryUseItem(0);
         }
@@ -119,7 +121,7 @@ public class Player : Entity
         {
             item.ExecuteItemEffects();
             Inventory.instance.RemoveItem(item);
-        }
+        }*/
     }
 
     public IEnumerator BusyFor(float _seconds)
@@ -133,17 +135,17 @@ public class Player : Entity
 
     public void AnimationTrigger() => StateMachine.CurrentState.AnimationFinishTrigger();
 
-    private void CheckForRollInput()
+    private void CheckForRollInput(InputAction.CallbackContext a)
     {
         if (IsWallDetected())
         {
             return;
         }
 
-        if (Input.GetKeyDown(KeyCode.LeftShift) && SkillManager.instance.Roll.CanUseSkill())
+        if (SkillManager.instance.Roll.CanUseSkill())
         {
 
-            RollDir = Input.GetAxisRaw("Horizontal");
+            RollDir = PlayerInputManager.instance.move.ReadValue<Vector2>().x;
 
             if (RollDir == 0)
             {

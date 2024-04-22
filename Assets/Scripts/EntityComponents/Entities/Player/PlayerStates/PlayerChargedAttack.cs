@@ -16,7 +16,7 @@
     {
         base.Enter();
 
-        stateTimer = .1f;
+        stateTimer = .2f;
     }
 
     public override void Exit()

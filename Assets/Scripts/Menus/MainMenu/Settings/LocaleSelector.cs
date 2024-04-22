@@ -13,14 +13,14 @@ public class LocaleSelector : MonoBehaviour
     private void OnEnable()
     {
         localeDropdown = GetComponent<TMP_Dropdown>();
-        int ID = PlayerPrefs.GetInt("LocaleKey", 1);
+        int ID = PrefsManager.instance.GetLocale();//PlayerPrefs.GetInt("LocaleKey", 1);
         localeDropdown.value = ID;
         //ChangeLocale(ID);
     }
 
     private void Start()
     {
-        int ID = PlayerPrefs.GetInt("LocaleKey", 1);
+        int ID = PrefsManager.instance.GetLocale();//PlayerPrefs.GetInt("LocaleKey", 1);
         ChangeLocale(ID);
     }
 
@@ -37,7 +37,7 @@ public class LocaleSelector : MonoBehaviour
             return;
         }
         StartCoroutine(SetLocale(localeID));
-        PlayerPrefs.SetInt("LocaleKey", localeID);
+        PrefsManager.instance.SetLocale(localeID);//PlayerPrefs.SetInt("LocaleKey", localeID);
     }
 
     private IEnumerator SetLocale(int _localeID)

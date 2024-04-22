@@ -15,7 +15,7 @@ MonoBehaviour:
   m_GroupName: Localization-Locales
   m_Data:
     m_SerializedData: []
-  m_GUID: 60e14f1ab298ad045aa025d5972578da
+  m_GUID: dd6d903ed7e6db041bcd629b2c31363a
   m_SerializeEntries:
   - m_GUID: 47c5f03b803e97949b1c9b3af579ea27
     m_Address: Italian (it)
@@ -30,8 +30,8 @@ MonoBehaviour:
     - Locale
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 1
-  m_Settings: {fileID: 11400000, guid: 1b2bb30c08654144a8f167c747a7f0f4, type: 2}
+  m_Settings: {fileID: 11400000, guid: e67fcc13c496dc543b06834c0905a308, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: 5b557cc83f1d34e4c8e37aea97dfdc1a, type: 2}
-    - {fileID: 11400000, guid: a08002865a13b9441b64175a5e351a0b, type: 2}
+    - {fileID: 11400000, guid: a0a6554041ad9834e83f53c6a5234163, type: 2}
+    - {fileID: 11400000, guid: 63dc7ac31f893124fae7257937448448, type: 2}

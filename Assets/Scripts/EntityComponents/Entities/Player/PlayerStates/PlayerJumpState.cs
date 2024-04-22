@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerJumpState : PlayerState
 {
@@ -10,25 +11,22 @@ public class PlayerJumpState : PlayerState
     public override void Enter()
     {
         base.Enter();
-
+        //stateTimer = .2f; -> DoubleJump Delay
 
         rb.velocity = new Vector2(rb.velocity.x, player.jumpForce);
+        PlayerInputManager.instance.jump.performed += DoubleJumpPerformed;
     }
 
     public override void Exit()
     {
         base.Exit();
+
+        PlayerInputManager.instance.jump.performed -= DoubleJumpPerformed;
     }
 
     public override void Update()
     {
         base.Update();
-
-        if(player.canDoubleJump && Input.GetKeyDown(KeyCode.Space))
-        {
-            player.canDoubleJump = false;
-            stateMachine.ChangeState(player.JumpState);
-        }
 
         if (xInput != 0)
         {
@@ -41,8 +39,12 @@ public class PlayerJumpState : PlayerState
         }
     }
 
-    private bool IsDoubleJumpUnlocked()
+    private void DoubleJumpPerformed(InputAction.CallbackContext ctx)
     {
-        return PlayerManager.instance.unlockedActions.Contains(PlayerAction.DoubleJump);
+        if (player.canDoubleJump) //&& stateTimer < 0)
+        {
+            player.canDoubleJump = false;
+            stateMachine.ChangeState(player.JumpState);
+        }
     }
 }

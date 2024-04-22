@@ -1,5 +1,6 @@
 ﻿
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerMoveState : PlayerGroundedState
 {
@@ -11,11 +12,15 @@ public class PlayerMoveState : PlayerGroundedState
     public override void Enter()
     {
         base.Enter();
+
+        PlayerInputManager.instance.run.performed += RunPerformed;
     }
 
     public override void Exit()
     {
         base.Exit();
+
+        PlayerInputManager.instance.run.performed -= RunPerformed;
     }
 
     public override void Update()
@@ -28,10 +33,10 @@ public class PlayerMoveState : PlayerGroundedState
         {
             stateMachine.ChangeState(player.IdleState);
         }
+    }
 
-        if (Input.GetKeyDown(KeyCode.LeftControl))
-        {
+    private void RunPerformed(InputAction.CallbackContext ctx)
+    {
             stateMachine.ChangeState(player.RunState);
-        }
     }
 }

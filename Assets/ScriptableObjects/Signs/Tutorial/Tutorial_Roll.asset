@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Tutorial_Roll
   m_EditorClassIdentifier: 
   SignName: '[Tutorial] Roll'
-  SignText: "Premi E per eseguire una rotolata, eseguita al momento giusto ti permetter\xE0
-    di non essere colpito!"
+  SignText: "Premi shift per eseguire una rotolata, eseguita al momento giusto ti
+    permetter\xE0 di non essere colpito!"
   actionsUnlocked: 05000000

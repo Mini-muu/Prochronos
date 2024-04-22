@@ -1,31 +1,24 @@
 using UnityEngine.UI;
-using UnityEngine.Rendering.PostProcessing;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Rendering.Universal;
+using UnityEngine.Rendering;
 
 public class BrightnessSettings : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI valueText;
+    [SerializeField] private VolumeProfile volumeProfile; 
+    private ColorAdjustments brightnessSettings;
 
     public Slider brightnessSlider;
-    public PostProcessProfile brightness;
-    public PostProcessLayer layer;
 
-    public float defaultBrightness = 1f;
+    public float defaultBrightness = 5f;
 
-    private AutoExposure exposure;
-
-    //TODO - Fix Brightness -> weird behaviour on game start
-    //https://www.youtube.com/watch?v=XiJ-kb-NvV4
-
-    // All'inizio del gioco, se esistono, carica i valori dei volumi salvati
     private void Start()
     {
-        //TODO - Fix Possible leak cause
-        // -> brightness.TryGetSettings(out exposure);
-        exposure = brightness.GetSetting<AutoExposure>();
-        
-        if (PlayerPrefs.HasKey("Brightness"))
+        volumeProfile.TryGet(out brightnessSettings);
+
+        if (PrefsManager.instance.HasBrightnessKey())
         {
             LoadBrightness();
         }
@@ -41,26 +34,38 @@ public class BrightnessSettings : MonoBehaviour
     {
         if (value != 0)
         {
-            exposure.keyValue.value = value/5.0f;
-        } else
-        {
-            exposure.keyValue.value = 0.05f;
+            value = TranslateValue(value);
+            brightnessSettings.postExposure.value = value;
         }
-        valueText.text = exposure.keyValue.value.ToString();
+        else
+        {
+            brightnessSettings.postExposure.value = -2f;
+        }
+        valueText.text = brightnessSettings.postExposure.value.ToString();
 
-        PlayerPrefs.SetFloat("Brightness", value*5);
+        PrefsManager.instance.SetBrightnes(brightnessSlider.value);
+    }
+
+    private float TranslateValue(float value)
+    {
+        float fixedValue = 0.4f;
+
+        if (value == 5) return 0;
+        if (value > 5) return ((value - 5) * fixedValue);
+        else return -(2 - (value * fixedValue));
     }
 
     public void SetDefaultBrightness()
     {
-        brightnessSlider.value = defaultBrightness*5;
-        PlayerPrefs.SetFloat("Brightness", defaultBrightness);
+        brightnessSlider.value = defaultBrightness;
     }
 
     // Carica i valori degli slider
     public void LoadBrightness()
     {
-        float brightnessValue = PlayerPrefs.GetFloat("Brightness")/5;
+        float brightnessValue = PrefsManager.instance.GetBrightness();
         brightnessSlider.value = brightnessValue;
     }
+
+   
 }

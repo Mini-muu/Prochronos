@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerGroundedState : PlayerState
 {
@@ -9,41 +10,55 @@ public class PlayerGroundedState : PlayerState
     public override void Enter()
     {
         base.Enter();
+
+        PlayerInputManager.instance.parry.performed += ParryPerformed;
+        PlayerInputManager.instance.normalAttack.performed += NormalAttackPerformed;
+        PlayerInputManager.instance.strongAttack.performed += StrongAttackPerformed;
+        PlayerInputManager.instance.jump.performed += JumpPerformed;
     }
 
     public override void Exit()
     {
         base.Exit();
+        PlayerInputManager.instance.parry.performed -= ParryPerformed;
+        PlayerInputManager.instance.normalAttack.performed -= NormalAttackPerformed;
+        PlayerInputManager.instance.strongAttack.performed -= StrongAttackPerformed;
+        PlayerInputManager.instance.jump.performed -= JumpPerformed;
     }
 
     public override void Update()
     {
         base.Update();
 
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            stateMachine.ChangeState(player.ParryState);
-        }
-
-        if (Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            stateMachine.ChangeState(player.NormalAttrackState);
-        }
-
-        if (Input.GetKeyDown(KeyCode.Mouse1))
-        {
-            stateMachine.ChangeState(player.ChargedAttackState);
-        }
-
         if (!player.IsGroundDetected())
         {
             stateMachine.ChangeState(player.AirState);
         }
-
-        if (Input.GetKeyDown(KeyCode.Space) && player.IsGroundDetected())
+        else
         {
-            stateMachine.ChangeState(player.JumpState);
             player.canDoubleJump = PlayerManager.instance.unlockedActions.Contains(PlayerAction.DoubleJump);
         }
+    }
+
+    private void ParryPerformed(InputAction.CallbackContext ctx)
+    {
+        stateMachine.ChangeState(player.ParryState);
+    }
+
+    private void NormalAttackPerformed(InputAction.CallbackContext ctx)
+    {
+        stateMachine.ChangeState(player.NormalAttrackState);
+    }
+
+    private void StrongAttackPerformed(InputAction.CallbackContext ctx)
+    {
+        stateMachine.ChangeState(player.ChargedAttackState);
+    }
+
+    private void JumpPerformed(InputAction.CallbackContext ctx)
+    {
+        if (!player.IsGroundDetected()) return;
+
+        stateMachine.ChangeState(player.JumpState);
     }
 }

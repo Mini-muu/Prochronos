@@ -15,25 +15,15 @@ MonoBehaviour:
   m_GroupName: Localization-Assets-Shared
   m_Data:
     m_SerializedData: []
-  m_GUID: 08064268728df114285904e93eb84772
+  m_GUID: 4fe21aebd71c7044c8dd037fabbe3ebd
   m_SerializeEntries:
   - m_GUID: 1eeabd9141bd98f4893b839aa69ef64f
-    m_Address: Assets/Localization/Table/StringTestTaable Shared Data.asset
+    m_Address: Assets/Localization/Table/Menu/MainMenu/MainMenu Shared Data.asset
     m_ReadOnly: 1
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 593ad3dc05c14114c9ed74ba68fd0e46
-    m_Address: Assets/Localization/Table/NewGameMenu Shared Data.asset
-    m_ReadOnly: 1
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: d50f194fbf9887f4b9e0beb12332b52e
-    m_Address: Assets/Localization/Table/SavedGameMenu Shared Data.asset
-    m_ReadOnly: 1
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 04a6d758b5f60ca4fa53fcf225342ab6
-    m_Address: Assets/Localization/Table/OptionsMenu Shared Data.asset
+    m_Address: Assets/Localization/Table/Menu/NewGameMenu/NewGameMenu Shared Data.asset
     m_ReadOnly: 1
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -43,15 +33,31 @@ MonoBehaviour:
     m_ReadOnly: 1
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d50f194fbf9887f4b9e0beb12332b52e
+    m_Address: Assets/Localization/Table/Menu/SavedGameMenu/SavedGameMenu Shared
+      Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 04a6d758b5f60ca4fa53fcf225342ab6
+    m_Address: Assets/Localization/Table/Menu/OptionsMenu/OptionsMenu Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 5ee974c518c989b458520c94b4d6e18a
     m_Address: Assets/Localization/Table/Menu/OptionsMenu/GraphicsSettings/GraphicsSettings
       Shared Data.asset
     m_ReadOnly: 1
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 97b5a3121444bc14ca6e78b71e8bc40f
+    m_Address: Assets/Localization/Table/Demo/DemoMainMenu Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 1
-  m_Settings: {fileID: 11400000, guid: 1b2bb30c08654144a8f167c747a7f0f4, type: 2}
+  m_Settings: {fileID: 11400000, guid: e67fcc13c496dc543b06834c0905a308, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: dd73c20a147e509428c194fc75762c77, type: 2}
-    - {fileID: 11400000, guid: 06f885f9b968cff4fb9b6caa15ff4447, type: 2}
+    - {fileID: 11400000, guid: cb801fea5ca6af749a4a18c6396fc889, type: 2}
+    - {fileID: 11400000, guid: 8e05804d4d07f60448718584fcc69e82, type: 2}

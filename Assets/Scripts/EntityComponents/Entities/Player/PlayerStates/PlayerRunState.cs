@@ -24,7 +24,7 @@ public class PlayerRunState : PlayerState
     }
 
    public override void Update()
-    {
+   {
         base.Update();
 
         if (playerStats.currentStamina < player.runConsumptionPerSec / 60)

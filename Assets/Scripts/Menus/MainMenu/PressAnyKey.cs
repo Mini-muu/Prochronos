@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PressAnyKey : MonoBehaviour
 {
@@ -28,7 +29,7 @@ public class PressAnyKey : MonoBehaviour
             PlayerPrefs.SetInt("played", 1);
         }*/
 
-        if (Input.anyKeyDown)
+        if (IsAnyKeyPressed())
         {
             pAnyK.SetActive(false);
             backgroundAC.SetBool("ZoomIn", true);
@@ -40,5 +41,10 @@ public class PressAnyKey : MonoBehaviour
     {
         menu.SetActive(true);
         topRightButtons.SetActive(true);
+    }
+
+    private bool IsAnyKeyPressed()
+    {
+        return Keyboard.current.anyKey.isPressed || Mouse.current.leftButton.isPressed || Mouse.current.rightButton.isPressed;
     }
 }

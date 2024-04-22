@@ -7,9 +7,13 @@ public class PlayerManager : MonoBehaviour, ISaveManager
     public static PlayerManager instance;
     public PlayerStats playerStats;
     public Player player;
+    private int playerBones;
+    [SerializeField] private TextMeshProUGUI bonesAmountText;
+
     public Wallet wallet;
 
     public List<PlayerAction> unlockedActions;
+
 
     private void Awake()
     {

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerWallSlideState : PlayerState
 {
@@ -10,11 +11,13 @@ public class PlayerWallSlideState : PlayerState
     public override void Enter()
     {
         base.Enter();
+        PlayerInputManager.instance.jump.performed += JumpPerformed;
     }
 
     public override void Exit()
     {
         base.Exit();
+        PlayerInputManager.instance.jump.performed -= JumpPerformed;
     }
 
     public override void Update()
@@ -26,11 +29,12 @@ public class PlayerWallSlideState : PlayerState
             stateMachine.ChangeState(player.AirState);
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        /*if (PlayerInputManager.instance.jump.IsPressed())
         {
             stateMachine.ChangeState(player.WallJumpState);
             return;
-        }
+        }*/
+        if (stateMachine.CurrentState.Equals(player.WallJumpState)) return;
 
         if (xInput != 0 && player.FacingDir != xInput)
         {
@@ -51,5 +55,10 @@ public class PlayerWallSlideState : PlayerState
         {
             stateMachine.ChangeState(player.IdleState);
         }
+    }
+
+    private void JumpPerformed(InputAction.CallbackContext ctx)
+    {
+        stateMachine.ChangeState(player.WallJumpState);
     }
 }
