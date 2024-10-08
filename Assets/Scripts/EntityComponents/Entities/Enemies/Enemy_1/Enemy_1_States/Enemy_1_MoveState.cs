@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-public class Enemy_1_MoveState : Enemy_1_GroundedState
+﻿public class Enemy_1_MoveState : Enemy_1_GroundedState
 {
     public Enemy_1_MoveState(Enemy _enemyBase, EnemyStateMachine _enemyStateMachine, string _animBoolName, Enemy_1 _enemy) : base(_enemyBase, _enemyStateMachine, _animBoolName, _enemy)
     {

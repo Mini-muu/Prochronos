@@ -24,7 +24,7 @@ public class DummyBrokenState : DummyState
         if (triggerCalled)
         {
             stateMachine.ChangeState(dummy.IdleState);
-            dummy.Destroy();       
+            dummy.Destroy();
         }
     }
 }

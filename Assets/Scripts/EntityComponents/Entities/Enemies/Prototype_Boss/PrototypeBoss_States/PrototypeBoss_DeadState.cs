@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-public class PrototypeBoss_DeadState : EnemyState
+﻿public class PrototypeBoss_DeadState : EnemyState
 {
     private PrototypeBoss boss;
 
@@ -23,7 +21,7 @@ public class PrototypeBoss_DeadState : EnemyState
     {
         base.Update();
 
-        if(triggerCalled)
+        if (triggerCalled)
         {
             boss.DestroyGameobject();
         }

@@ -28,7 +28,7 @@
             stateMachine.ChangeState(player.AirState);
         }
 
-        if(stateTimer < 0 && (player.IsWallDetected() || player.IsGroundDetected())) 
+        if (stateTimer < 0 && (player.IsWallDetected() || player.IsGroundDetected()))
         {
             player.StopKnockback();
         }

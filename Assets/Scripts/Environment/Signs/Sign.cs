@@ -15,7 +15,7 @@ public class Sign : MonoBehaviour
 
     private void OnValidate()
     {
-        if(data == null) return;
+        if (data == null) return;
 
         Setup();
     }
@@ -27,7 +27,7 @@ public class Sign : MonoBehaviour
 
     private void Setup()
     {
-        gameObject.name = isDemoTutorial? $"DemoSign - {data.SignName}":$"Sign - {data.SignName}";
+        gameObject.name = isDemoTutorial ? $"DemoSign - {data.SignName}" : $"Sign - {data.SignName}";
         GetComponent<Collider2D>().isTrigger = true;
         signText = GetComponentInChildren<TextMeshPro>();
 
@@ -60,7 +60,7 @@ public class Sign : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if(isDemoTutorial)
+        if (isDemoTutorial)
         {
             HideInteractible();
             CloseExplanationWindow();
@@ -83,7 +83,8 @@ public class Sign : MonoBehaviour
         {
             OpenExplanationWindow();
             data.UnlockActions();
-        } else
+        }
+        else
         {
             CloseExplanationWindow();
         }

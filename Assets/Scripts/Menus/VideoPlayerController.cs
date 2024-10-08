@@ -1,6 +1,6 @@
 using UnityEngine;
-using UnityEngine.Video;
 using UnityEngine.SceneManagement;
+using UnityEngine.Video;
 
 public class VideoPlayerController : MonoBehaviour
 {

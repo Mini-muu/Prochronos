@@ -45,10 +45,11 @@ public class EntityFX : MonoBehaviour
 
     public void MakeTransparent(bool _transparent)
     {
-        if(_transparent)
+        if (_transparent)
         {
             sr.color = Color.clear;
-        } else
+        }
+        else
         {
             sr.color = Color.white;
         }

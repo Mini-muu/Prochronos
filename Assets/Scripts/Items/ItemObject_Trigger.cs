@@ -6,11 +6,11 @@ public class ItemObject_Trigger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.GetComponent<Player>() != null)
+        if (collision.GetComponent<Player>() != null)
         {
-            if(IsPickUpUnlocked())
+            if (IsPickUpUnlocked())
                 myItemObject.PickupItem();
-        }    
+        }
     }
 
     private bool IsPickUpUnlocked() => PlayerManager.instance.unlockedActions.Contains(PlayerAction.AutoPickUp);

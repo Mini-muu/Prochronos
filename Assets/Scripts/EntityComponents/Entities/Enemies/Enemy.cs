@@ -35,7 +35,7 @@ public class Enemy : Entity
     {
         base.Start();
 
-         FX = GetComponent<EntityFX>();
+        FX = GetComponent<EntityFX>();
     }
 
     protected override void Update()

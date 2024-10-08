@@ -39,7 +39,7 @@ public class UI_PlayerHealthBar : MonoBehaviour
         //currentHP = 3 -> 1.5 slot
         for (int i = 0; i < hpIndicators.Count; i++)
         {
-            hpIndicators[i].GetComponent<Image>().sprite = currentHp > (i + 1) * 2 ? intactHPSprite : (i+1)*2 - currentHp >= 2 ? brokenHPSprite : currentHp % 2 == 0 ? intactHPSprite : damagedfHPSprite;
+            hpIndicators[i].GetComponent<Image>().sprite = currentHp > (i + 1) * 2 ? intactHPSprite : (i + 1) * 2 - currentHp >= 2 ? brokenHPSprite : currentHp % 2 == 0 ? intactHPSprite : damagedfHPSprite;
             //i = 1 -> 3 > 2(i+1) [y] -> intact
             //i = 2 -> 3 > 4(i+1) [n] -> 4 - 3 >= 2 [n] -> 3 % 2 == 0 [n] -> damaged
             //i = 3 -> 3 > 6(i+1) [n] -> 6 - 3 >= 2 [y] -> broken
@@ -51,7 +51,7 @@ public class UI_PlayerHealthBar : MonoBehaviour
 
     private void UpdateMaxHealthUI()
     {
-        while(playerStats.maxHealth.GetValue()/2.0 > hpIndicators.Count)
+        while (playerStats.maxHealth.GetValue() / 2.0 > hpIndicators.Count)
         {
             Transform clone = Instantiate(firstSprite, parentObject);
             clone.SetAsLastSibling();

@@ -1,7 +1,4 @@
-﻿
-using UnityEngine;
-
-// PLACEHOLDER
+﻿// PLACEHOLDER
 public class Enemy_1 : Enemy
 {
     #region States

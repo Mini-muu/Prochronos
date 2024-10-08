@@ -17,7 +17,7 @@ public class ItemData : ScriptableObject
     public Sprite icon;
     public string itemId;
 
-    [Range(0,100)]
+    [Range(0, 100)]
     public float dropChance;
 
     public ItemEffect[] itemEffects;

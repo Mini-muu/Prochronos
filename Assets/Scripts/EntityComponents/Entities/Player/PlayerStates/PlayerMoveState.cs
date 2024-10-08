@@ -1,6 +1,4 @@
-﻿
-using UnityEngine;
-using UnityEngine.InputSystem;
+﻿using UnityEngine.InputSystem;
 
 public class PlayerMoveState : PlayerGroundedState
 {
@@ -37,6 +35,6 @@ public class PlayerMoveState : PlayerGroundedState
 
     private void RunPerformed(InputAction.CallbackContext ctx)
     {
-            stateMachine.ChangeState(player.RunState);
+        stateMachine.ChangeState(player.RunState);
     }
 }

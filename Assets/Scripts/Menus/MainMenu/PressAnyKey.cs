@@ -12,10 +12,11 @@ public class PressAnyKey : MonoBehaviour
     private void Start()
     {
         //Test Only
-        if (PlayerPrefs.GetInt("played") == 1) {
+        if (PlayerPrefs.GetInt("played") == 1)
+        {
             PlayerPrefs.SetInt("played", 0);
-        } 
-        
+        }
+
         menu.SetActive(false);
         pAnyK.SetActive(true);
     }

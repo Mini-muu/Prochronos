@@ -1,29 +1,26 @@
-using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using System.IO;
-using System;
 
 public class MainMenu : MonoBehaviour
 {
     [SerializeField] private GameObject mainMenu;
     /*[SerializeField] private GameObject savesMenu;
     [SerializeField] private TextMeshProUGUI loadGameText;*/
-   /* private static string path;
-    private static FileInfo fi;
-    [SerializeField, Tooltip("This parameter allow the script to delete the file with the saved data (used for test).")] private bool deleteFileQuit = false;
+    /* private static string path;
+     private static FileInfo fi;
+     [SerializeField, Tooltip("This parameter allow the script to delete the file with the saved data (used for test).")] private bool deleteFileQuit = false;
 
-    private void Start()
-    {
-        // Open an existing file, or create a new one.
-        fi = new FileInfo("MainMenu.cs");
-        // Debug.Log("Game directory: " + fi.DirectoryName);
-        path = (fi.DirectoryName + @"\Assets\Data\saveData.txt");
-        if (File.Exists(path))
-        {
-            //loadGameText.color = Color.white;
-        }
-    }*/
+     private void Start()
+     {
+         // Open an existing file, or create a new one.
+         fi = new FileInfo("MainMenu.cs");
+         // Debug.Log("Game directory: " + fi.DirectoryName);
+         path = (fi.DirectoryName + @"\Assets\Data\saveData.txt");
+         if (File.Exists(path))
+         {
+             //loadGameText.color = Color.white;
+         }
+     }*/
 
     public void PlayGame()
     {
@@ -119,9 +116,9 @@ public class MainMenu : MonoBehaviour
         //}
 
         //Conditional compilation
-        #if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false;
-        #endif
-            Application.Quit();
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#endif
+        Application.Quit();
     }
 }

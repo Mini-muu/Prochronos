@@ -20,6 +20,9 @@
     {
         base.Update();
 
+        if (triggerCalled)
+            new GameOver();
+
         if (player.IsGroundDetected() /*|| player.IsWallDetected()*/)
             player.SetZeroVelocity();
 
@@ -29,7 +32,7 @@
         {
             player.SetZeroVelocity();
         }*/
-        
+
         //GameOver part
     }
 }

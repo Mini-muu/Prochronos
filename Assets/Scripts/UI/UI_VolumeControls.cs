@@ -39,7 +39,7 @@ public class UI_VolumeControls : MonoBehaviour
 
     public void LoadSlider(float _value)
     {
-        if(_value >= 0.001f)
+        if (_value >= 0.001f)
         {
             slider.value = _value;
         }

@@ -1,5 +1,4 @@
-﻿using System.ComponentModel;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Enemy_1_DeadState : EnemyState
 {
@@ -36,12 +35,12 @@ public class Enemy_1_DeadState : EnemyState
             canDestroy = true;
         }
 
-        if(stateTimer < 0 && canDestroy)
+        if (stateTimer < 0 && canDestroy)
         {
             enemy.DestroyGameobject();
         }
 
-        if(triggerCalled && !executed)
+        if (triggerCalled && !executed)
         {
             enemy.Anim.SetBool(enemy.LastAnimBolName, true);
             enemy.Anim.speed = 0;

@@ -13,7 +13,7 @@ public class PrototypeBoss : Enemy
 
     #endregion
 
-    [Header ("Teleport details")]
+    [Header("Teleport details")]
     [SerializeField] private Vector2 surroundingCheckSize;
     [SerializeField] private float yOffset;
     private Vector2 previousPosition;
@@ -64,7 +64,7 @@ public class PrototypeBoss : Enemy
         previousPosition = transform.position;
         transform.position = playerPos + new Vector3(-dir * 2, yOffset, 0);
 
-        if(IsTeleportNotValid())
+        if (IsTeleportNotValid())
         {
             transform.position = new Vector3(transform.position.x * -1, transform.position.y, transform.position.z);
 
@@ -82,7 +82,7 @@ public class PrototypeBoss : Enemy
     }
 
     private RaycastHit2D GroundBelow() => Physics2D.Raycast(transform.position, Vector2.down, 100, whatIsGround);
-    private bool SomethingIsAround() => Physics2D.BoxCast(transform.position, surroundingCheckSize, 0, Vector2.zero, 0 , whatIsGround);
+    private bool SomethingIsAround() => Physics2D.BoxCast(transform.position, surroundingCheckSize, 0, Vector2.zero, 0, whatIsGround);
 
     protected override void OnDrawGizmos()
     {

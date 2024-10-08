@@ -19,8 +19,8 @@ TagManager:
   - Enemy
   - Item
   - Postprocessing
-  - 
-  - 
+  - MiniMap
+  - PlayerCamera
   - 
   - 
   - 

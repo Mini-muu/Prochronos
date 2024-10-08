@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -95,7 +94,7 @@ public class Player : Entity
         StateMachine.CurrentState.Update();
 
         //CheckForRollInput();
-        
+
         /*if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             TryUseItem(0);
@@ -167,7 +166,7 @@ public class Player : Entity
 
     public void SetDeadVelocity()
     {
-        RB.velocity = new Vector2(4*(-FacingDir), RB.velocityY);
+        RB.velocity = new Vector2(4 * (-FacingDir), RB.velocityY);
     }
 
     public override void OnHeavyHit()

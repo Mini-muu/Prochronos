@@ -26,6 +26,8 @@ public class PlayerJumpState : PlayerState
 
     public override void Update()
     {
+        //Debug.Log(player.canDoubleJump);
+
         base.Update();
 
         if (xInput != 0)

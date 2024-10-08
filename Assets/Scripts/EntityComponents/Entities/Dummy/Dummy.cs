@@ -1,6 +1,3 @@
-using System;
-using UnityEngine;
-
 public class Dummy : Entity
 {
     private bool hasDroppedMeat;
@@ -13,7 +10,7 @@ public class Dummy : Entity
     public DummyLightHitState LightHitState { get; private set; }
     public DummyHeavyHitState HeavyHitState { get; private set; }
     public DummyBrokenState BrokenState { get; private set; }
-    
+
     #endregion
 
     protected override void Awake()
@@ -62,14 +59,14 @@ public class Dummy : Entity
     {
         base.OnLightHit();
         StateMachine.ChangeState(LightHitState);
-        
+
         TryDropMeat();
     }
 
     private void TryDropMeat()
     {
         hitCounter++;
-        if(hitCounter == 2 && !hasDroppedMeat)
+        if (hitCounter == 2 && !hasDroppedMeat)
         {
             GetComponent<ItemDrop>().TutorialDropGenerator(false);
             hasDroppedMeat = true;

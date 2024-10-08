@@ -1,5 +1,4 @@
-﻿using System.Runtime.CompilerServices;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CharacterStats : MonoBehaviour
 {
@@ -28,7 +27,7 @@ public class CharacterStats : MonoBehaviour
     public System.Action onMaxStaminaChanged;
 
     public bool IsDead { get; private set; }
-    public bool IsInvicible {  get; private set; }
+    public bool IsInvicible { get; private set; }
 
     protected virtual void Start()
     {
@@ -46,10 +45,10 @@ public class CharacterStats : MonoBehaviour
 
         bool hasBeenDamaged = Damage(totalDamage, _targetStats);
 
-        if(hasBeenDamaged && _targetStats.currentHealth > 0)
+        if (hasBeenDamaged && _targetStats.currentHealth > 0)
         {
             Entity entity = _targetStats.gameObject.GetComponent<Entity>();
-            if(entity != null)
+            if (entity != null)
             {
                 entity.OnLightHit();
             }

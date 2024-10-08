@@ -1,13 +1,13 @@
-using UnityEngine.UI;
-using UnityEngine;
 using TMPro;
-using UnityEngine.Rendering.Universal;
+using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
+using UnityEngine.UI;
 
 public class BrightnessSettings : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI valueText;
-    [SerializeField] private VolumeProfile volumeProfile; 
+    [SerializeField] private VolumeProfile volumeProfile;
     private ColorAdjustments brightnessSettings;
 
     public Slider brightnessSlider;
@@ -67,5 +67,5 @@ public class BrightnessSettings : MonoBehaviour
         brightnessSlider.value = brightnessValue;
     }
 
-   
+
 }

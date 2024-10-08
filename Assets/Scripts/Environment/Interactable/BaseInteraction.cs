@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class BaseInteraction : MonoBehaviour
 {
-    public bool IsKeyInteractionNeeded;
+    public bool IsKeyPressNeeded;
     //[Space]
     //[Header("Temporaneo")]
     //public KeyCode interactionKey;
@@ -12,14 +12,17 @@ public class BaseInteraction : MonoBehaviour
         if (collision.GetComponent<Player>() != null)
         {
             //replace with performed
-            if (IsKeyInteractionNeeded && PlayerInputManager.instance.interact.IsPressed())//Input.GetKeyDown(interactionKey))
+            if (IsKeyPressNeeded && CheckKeyPress())//Input.GetKeyDown(interactionKey))
                 ExecuteInteraction();
             else
                 ExecuteInteraction();
         }
     }
 
-    public virtual void ExecuteInteraction() 
+    private bool CheckKeyPress() => PlayerInputManager.instance.interact.IsPressed();
+
+
+    public virtual void ExecuteInteraction()
     {
 
     }

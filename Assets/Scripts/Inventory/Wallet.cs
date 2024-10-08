@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using TMPro;
-using UnityEditorInternal.Profiling.Memory.Experimental;
+﻿using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Wallet : MonoBehaviour
 {
-    [SerializeField] public int currentBonesAmount;
-    [SerializeField] public int maxBonesAmount;
+
+    [SerializeField] private int currentBonesAmount;
+    [SerializeField] private int maxBonesAmount;
     [SerializeField] private Image itemImage;
     [SerializeField] private TextMeshProUGUI bonesAmountText;
 
@@ -37,4 +35,5 @@ public class Wallet : MonoBehaviour
         bonesAmountText.text = $"{currentBonesAmount}";
     }
 
+    public bool HasEnoughMoney(int amountNeeded) => currentBonesAmount >= amountNeeded;
 }

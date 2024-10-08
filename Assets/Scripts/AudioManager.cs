@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
@@ -22,12 +20,14 @@ public class AudioManager : MonoBehaviour
 
     private void Update()
     {
-        if(!playBgm)
+        if (!playBgm)
         {
             StopAllBGM();
-        }  else
+        }
+        else
         {
-            if (!bgm[bgmIndex].isPlaying){
+            if (!bgm[bgmIndex].isPlaying)
+            {
                 PlayBGM(bgmIndex);
             }
         }
@@ -35,7 +35,7 @@ public class AudioManager : MonoBehaviour
 
     public void PlaySFX(int _sfxIndex)
     {
-        if(_sfxIndex < sfx.Length)
+        if (_sfxIndex < sfx.Length)
         {
             //sfx[_sfxIndex].pitch = Random.Range(0.85f, 1.1f);
             sfx[_sfxIndex].Play();
@@ -46,7 +46,7 @@ public class AudioManager : MonoBehaviour
 
     public void PlayRandomBGM()
     {
-        bgmIndex = Random.Range(0,bgm.Length);
+        bgmIndex = Random.Range(0, bgm.Length);
         PlayBGM(bgmIndex);
     }
 

@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
-
-public class PrototypeBoss_TeleportState : EnemyState
+﻿public class PrototypeBoss_TeleportState : EnemyState
 {
     private PrototypeBoss boss;
 
@@ -28,7 +25,7 @@ public class PrototypeBoss_TeleportState : EnemyState
     {
         base.Update();
 
-        if(triggerCalled)
+        if (triggerCalled)
         {
             stateMachine.ChangeState(boss.BattleState);
         }

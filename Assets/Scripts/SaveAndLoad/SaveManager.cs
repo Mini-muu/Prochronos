@@ -1,21 +1,21 @@
 using System.Collections.Generic;
-using UnityEngine;
 using System.Linq;
+using UnityEngine;
 
 public class SaveManager : MonoBehaviour
 {
     public static SaveManager instance;
 
     [SerializeField] private string fileName;
-    
+
     private GameData gameData;
     private List<ISaveManager> saveManagers;
     private FileDataHandler dataHandler;
 
     private void Awake()
     {
-        if(instance != null )
-            Destroy( instance.gameObject );
+        if (instance != null)
+            Destroy(instance.gameObject);
         else
             instance = this;
     }
@@ -24,7 +24,7 @@ public class SaveManager : MonoBehaviour
     {
         dataHandler = new FileDataHandler(Application.persistentDataPath, fileName);
         saveManagers = FindAllSaveManagers();
-        
+
         LoadGame();
     }
 
@@ -39,13 +39,13 @@ public class SaveManager : MonoBehaviour
         // game data = data from data handler
         gameData = dataHandler.Load();
 
-        if(this.gameData == null)
+        if (this.gameData == null)
         {
             Debug.Log("No Saved Data");
             NewGame();
         }
 
-        foreach(ISaveManager saveManager in saveManagers)
+        foreach (ISaveManager saveManager in saveManagers)
         {
             saveManager.LoadData(gameData);
         }
@@ -53,7 +53,7 @@ public class SaveManager : MonoBehaviour
 
     public void SaveGame()
     {
-        foreach(ISaveManager saveManager in saveManagers)
+        foreach (ISaveManager saveManager in saveManagers)
         {
             saveManager.SaveData(ref gameData);
         }

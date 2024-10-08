@@ -23,8 +23,8 @@ public class PlayerRunState : PlayerState
         player.SetVelocity(0, rb.velocity.y);
     }
 
-   public override void Update()
-   {
+    public override void Update()
+    {
         base.Update();
 
         if (playerStats.currentStamina < player.runConsumptionPerSec / 60)

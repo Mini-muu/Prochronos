@@ -6,10 +6,10 @@ public class PrototypeBoss_AnimationTriggers : MonoBehaviour
 {
     private PrototypeBoss enemy => GetComponentInParent<PrototypeBoss>();
 
-private void AnimationTrigger()
-{
-    enemy.AnimationFinishTrigger();
-}
+    private void AnimationTrigger()
+    {
+        enemy.AnimationFinishTrigger();
+    }
 
     private void AttackTrigger()
     {

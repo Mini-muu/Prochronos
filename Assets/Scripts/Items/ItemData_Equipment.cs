@@ -12,7 +12,7 @@ public class ItemData_Equipment : ItemData
 {
     public EquipmentType equipmentType;
 
-    [Header ("Stats Modifiers")]
+    [Header("Stats Modifiers")]
     public int health;
     public int stamina;
     public int armor;

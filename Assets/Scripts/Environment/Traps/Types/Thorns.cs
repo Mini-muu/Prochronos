@@ -10,7 +10,8 @@ public class Thorns : Trap
         if (pStats != null)
         {
             HurtPlayer(pStats, collider);
-        } else
+        }
+        else
         {
             KillEnemy(collider);
         }
@@ -21,7 +22,7 @@ public class Thorns : Trap
         Player p = collider.GetComponent<Player>();
 
         if (p == null) return;
-        
+
         p.knockbackDir = knockback;
         if (doesKnockback && pStats.TryTakeDamage(damage))
         {

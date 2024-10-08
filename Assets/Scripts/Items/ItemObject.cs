@@ -30,7 +30,8 @@ public class ItemObject : MonoBehaviour
         {
             BonesData bones = itemData as BonesData;
             PlayerManager.instance.wallet.IncreaseAmountBy(bones.amount);
-        } else
+        }
+        else
         {
             Inventory.instance.AddItem(itemData);
             //itemData.ExecuteItemEffects();

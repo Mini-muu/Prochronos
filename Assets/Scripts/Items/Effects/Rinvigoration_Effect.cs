@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(fileName ="New Effect Data", menuName = "Data/Effect/Rinvigoration Effect")]
+[CreateAssetMenu(fileName = "New Effect Data", menuName = "Data/Effect/Rinvigoration Effect")]
 public class Rinvigoration_Effect : ItemEffect
 {
     [SerializeField] private int rinvigorateAmount;

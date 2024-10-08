@@ -60,7 +60,7 @@ public class PlayerStats : CharacterStats
 
     private bool AllowStaminaRecovery()
     {
-        if(player.allowStaminaRecovery) return true;
+        if (player.allowStaminaRecovery) return true;
 
         return timeElapsed >= staminaWaitingRecovery;
     }

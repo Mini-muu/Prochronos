@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
-using UnityEngine.InputSystem;
+﻿using UnityEngine.InputSystem;
 
 public class PrototypeBoss_IdleState : EnemyState
 {
@@ -26,7 +24,7 @@ public class PrototypeBoss_IdleState : EnemyState
     {
         base.Update();
 
-        if(Keyboard.current.uKey.IsPressed())//Input.GetKeyDown(KeyCode.U)) 
+        if (Keyboard.current.uKey.IsPressed())//Input.GetKeyDown(KeyCode.U)) 
         {
             stateMachine.ChangeState(boss.TeleportState);
         }

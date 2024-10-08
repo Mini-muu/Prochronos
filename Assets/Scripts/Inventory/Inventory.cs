@@ -7,10 +7,10 @@ public class Inventory : MonoBehaviour, ISaveManager
     public static Inventory instance;
 
     public List<InventoryItem> inventoryItems;
-   // public Dictionary<ItemData, InventoryItem> inventoryDictionary;
+    // public Dictionary<ItemData, InventoryItem> inventoryDictionary;
 
     //
-      
+
     public List<KeyValuePair<ItemData, InventoryItem>> inventoryItemsAlt;
 
     //
@@ -29,10 +29,11 @@ public class Inventory : MonoBehaviour, ISaveManager
 
     private void Awake()
     {
-        if(instance == null)
+        if (instance == null)
         {
             instance = this;
-        } else
+        }
+        else
         {
             Destroy(gameObject);
         }
@@ -78,7 +79,7 @@ public class Inventory : MonoBehaviour, ISaveManager
 
     public void UnEquipItem(ItemData_Equipment itemToRemove)
     {
-        if(equipemntDictionary.TryGetValue(itemToRemove, out InventoryItem value))
+        if (equipemntDictionary.TryGetValue(itemToRemove, out InventoryItem value))
         {
             equipment.Remove(value);
             equipemntDictionary.Remove(itemToRemove);
@@ -92,7 +93,8 @@ public class Inventory : MonoBehaviour, ISaveManager
         if (!IsMeat(_item) && TryGetValue(_item, out InventoryItem value) != null)
         {
             value.AddStack();
-        } else
+        }
+        else
         {
             InventoryItem newItem = new InventoryItem(_item);
             inventoryItems.Add(newItem);
@@ -106,8 +108,9 @@ public class Inventory : MonoBehaviour, ISaveManager
     {
         value = null;
 
-        foreach(var itemPair in inventoryItemsAlt) {
-            if(itemPair.Key == key)
+        foreach (var itemPair in inventoryItemsAlt)
+        {
+            if (itemPair.Key == key)
             {
                 value = itemPair.Value;
             }
@@ -122,7 +125,7 @@ public class Inventory : MonoBehaviour, ISaveManager
 
     public void RemoveItem(ItemData _item)
     {
-        if(TryGetValue(_item, out InventoryItem value) != null)
+        if (TryGetValue(_item, out InventoryItem value) != null)
         {
             if (value.stackSize <= 1)
             {

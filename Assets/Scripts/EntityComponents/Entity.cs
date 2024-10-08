@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using UnityEditor.Build.Pipeline;
 using UnityEngine;
 
 
@@ -12,7 +11,7 @@ public class Entity : MonoBehaviour
     public Vector2 knockbackDir;
     public float knockbackDuration = .07f;
     //TODO - FIX Knockback power => This is actually used when receiving not giving
-    public float knockbackPower = 1.0f;    
+    public float knockbackPower = 1.0f;
     public float OriginalKnockbackDuration { get; private set; }
     public bool IsKnocked { get; protected set; }
 
@@ -38,6 +37,8 @@ public class Entity : MonoBehaviour
     public CharacterStats Stats { get; private set; }
     public CapsuleCollider2D CD { get; private set; }
 
+    [field: SerializeField] private Transform MinimapIndicatorTransform { get; set; }
+
     #endregion
 
     protected virtual void Awake()
@@ -57,7 +58,11 @@ public class Entity : MonoBehaviour
     }
 
     // Update is called once per frame
-    protected virtual void Update() { }
+    protected virtual void Update()
+    {
+        if (MinimapIndicatorTransform != null)
+            MinimapIndicatorTransform.position = transform.position;
+    }
 
     public virtual void DamageImpact()
     {

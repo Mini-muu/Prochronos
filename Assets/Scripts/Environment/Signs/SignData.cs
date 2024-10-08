@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName ="New Sign Data", menuName = "Data/Sign")]
+[CreateAssetMenu(fileName = "New Sign Data", menuName = "Data/Sign")]
 public class SignData : ScriptableObject
 {
     public string SignName;
@@ -12,7 +12,7 @@ public class SignData : ScriptableObject
 
     public void UnlockActions()
     {
-        foreach(PlayerAction newUnlockedAction in actionsUnlocked)
+        foreach (PlayerAction newUnlockedAction in actionsUnlocked)
         {
             TryUnlock(newUnlockedAction);
         }
@@ -21,7 +21,7 @@ public class SignData : ScriptableObject
     private void TryUnlock(PlayerAction actionToUnlock)
     {
         PlayerManager pm = PlayerManager.instance;
-        if(!pm.unlockedActions.Contains(actionToUnlock))
+        if (!pm.unlockedActions.Contains(actionToUnlock))
             pm.unlockedActions.Add(actionToUnlock);
     }
 }
