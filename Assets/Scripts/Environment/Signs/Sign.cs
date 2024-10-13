@@ -13,6 +13,8 @@ public class Sign : MonoBehaviour
 
     [SerializeField] private GameObject interactionObject;
 
+    private bool hasBeenOpenedOnce = false; // nuova variabile boleana per vedere se il cartello è gia stato attivato o meno
+
     private void OnValidate()
     {
         if (data == null) return;
@@ -48,8 +50,17 @@ public class Sign : MonoBehaviour
         {
             if (isDemoTutorial)
             {
-                ShowInteractible();
-                PlayerInputManager.instance.interact.performed += InteractionPerformed;
+                if (!hasBeenOpenedOnce)
+                {
+                    OpenExplanationWindow();
+                    hasBeenOpenedOnce = true; // in questo caso lo marchia poi come gia aperto
+                }
+                else
+                {
+                    ShowInteractible();
+                    PlayerInputManager.instance.interact.performed += InteractionPerformed;
+                }
+               
             }
             else
             {
