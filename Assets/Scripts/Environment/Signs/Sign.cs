@@ -62,10 +62,7 @@ public class Sign : MonoBehaviour
                 }
                
             }
-            else
-            {
-                data.UnlockActions();
-            }
+            data.UnlockActions();
         }
     }
 
