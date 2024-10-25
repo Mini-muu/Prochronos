@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Tutorial_PlatformPassThrough
   m_EditorClassIdentifier: 
   SignName: '[Tutorial] Platform pass through'
-  SignText: Premi S per scendere dalla piattaforma
+  SignText: Premi S e Spazio per scendere dalla piattaforma
   actionsUnlocked: 0a000000

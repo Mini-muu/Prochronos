@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,10 +9,11 @@ public class Sign : MonoBehaviour
     [SerializeField] private GameObject explanationWindow;
 
     [SerializeField] private SignData data;
-    [SerializeField] private TextMeshPro signText;
     [SerializeField] private bool isDemoTutorial = false;
 
     [SerializeField] private GameObject interactionObject;
+
+    [SerializeField] private List<GameObject> signType;
 
     private bool hasBeenOpenedOnce = false; // nuova variabile boleana per vedere se il cartello è gia stato attivato o meno
 
@@ -19,61 +21,60 @@ public class Sign : MonoBehaviour
     {
         if (data == null) return;
 
-        Setup();
+        InitialSetup();
+    }
+
+    private void SelectSignType() 
+    { 
+        int randomIndex = Random.Range(0, signType.Count);
+
+        for(int i = 0; i < signType.Count; i++)
+        {
+            if(randomIndex == i)
+                signType[i].SetActive(true);
+            else
+                signType[i].SetActive(false);
+        }
     }
 
     private void Start()
     {
-        Setup();
+        SelectSignType();
+        InitialSetup();
     }
 
-    private void Setup()
+    private void InitialSetup()
     {
         gameObject.name = isDemoTutorial ? $"DemoSign - {data.SignName}" : $"Sign - {data.SignName}";
         GetComponent<Collider2D>().isTrigger = true;
-        signText = GetComponentInChildren<TextMeshPro>();
 
-        if (isDemoTutorial)
-        {
-            signText.text = "! ! !";
-            explanationText.text = data.SignText;
-        }
-        else
-        {
-            signText.text = data.SignText;
-        }
+        explanationText.text = data.SignText;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.GetComponent<Player>() != null)
         {
-            if (isDemoTutorial)
+            if (!hasBeenOpenedOnce)
             {
-                if (!hasBeenOpenedOnce)
-                {
-                    OpenExplanationWindow();
-                    hasBeenOpenedOnce = true; // in questo caso lo marchia poi come gia aperto
-                }
-                else
-                {
-                    ShowInteractible();
-                    PlayerInputManager.instance.interact.performed += InteractionPerformed;
-                }
-               
+                OpenExplanationWindow();
+                hasBeenOpenedOnce = true; // in questo caso lo marchia poi come gia aperto
             }
+            else
+            {
+                ShowInteractible();
+                PlayerInputManager.instance.interact.performed += InteractionPerformed;
+            }
+
             data.UnlockActions();
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (isDemoTutorial)
-        {
             HideInteractible();
             CloseExplanationWindow();
-            PlayerInputManager.instance.interact.performed -= InteractionPerformed;
-        }
+            PlayerInputManager.instance.interact.performed -= InteractionPerformed;   
     }
 
     private void ShowInteractible()

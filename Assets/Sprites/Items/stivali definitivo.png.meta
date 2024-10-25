@@ -128,7 +128,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      stivali definitivo_0: -6467504474343868289
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,4 +1,5 @@
-﻿using UnityEngine.InputSystem;
+﻿using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerGroundedState : PlayerState
 {
@@ -56,8 +57,10 @@ public class PlayerGroundedState : PlayerState
 
     private void JumpPerformed(InputAction.CallbackContext ctx)
     {
-        if (!player.IsGroundDetected()) return;
+        if (!player.IsGroundDetected() || IsLookingDown()) return;
 
         stateMachine.ChangeState(player.JumpState);
     }
+
+    private bool IsLookingDown() => PlayerInputManager.instance.move.ReadValue<Vector2>().y < 0;
 }

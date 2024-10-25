@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -13,13 +14,17 @@ public class PlatformPassThorugh : MonoBehaviour
 
     private void Update()
     {
-        if (isPlayerOnPlatform && PlayerInputManager.instance.move.ReadValue<Vector2>().y < 0 && IsPassThroughUnlocked())
+        if (isPlayerOnPlatform && IsPlayerJumping() && IsPlayerLookingDown())
         {
             _collider.enabled = false;
             StartCoroutine(EnableCollider());
         }
     }
 
+    private bool IsPlayerLookingDown() => PlayerInputManager.instance.move.ReadValue<Vector2>().y < 0 && IsPassThroughUnlocked();
+    
+    private bool IsPlayerJumping() => PlayerInputManager.instance.jump.IsPressed();
+    
     private bool IsPassThroughUnlocked() => PlayerManager.instance.unlockedActions.Contains(PlayerAction.PlatfromPassThrough);
 
     private IEnumerator EnableCollider()

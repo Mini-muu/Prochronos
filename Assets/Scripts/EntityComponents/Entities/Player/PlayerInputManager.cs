@@ -5,7 +5,7 @@ public class PlayerInputManager : MonoBehaviour
 {
     //Santa sia questa donna
     //https://www.youtube.com/watch?v=OT537RfNzCU
-
+    //
 
     [SerializeField] private InputActionAsset inputs;
     [SerializeField] private PlayerInput playerInput;
@@ -18,6 +18,7 @@ public class PlayerInputManager : MonoBehaviour
     [HideInInspector] public InputAction run;
     [HideInInspector] public InputAction interact;
     [HideInInspector] public InputAction parry;
+    [HideInInspector] public InputAction openMenu;
 
     public static PlayerInputManager instance;
 
@@ -54,6 +55,7 @@ public class PlayerInputManager : MonoBehaviour
         run = inputs.FindAction("Run");
         interact = inputs.FindAction("Interact");
         parry = inputs.FindAction("Parry");
+        openMenu = inputs.FindAction("OpenMenu");
     }
 
     public PlayerInput GetInput()
@@ -61,4 +63,16 @@ public class PlayerInputManager : MonoBehaviour
         return playerInput;
     }
 
+    internal void DisableActions()
+    {
+        foreach(InputAction input in inputs)
+            if (input != openMenu)
+                input.Disable();
+    }
+
+    internal void EnableActions()
+    {
+        foreach(InputAction input in inputs)
+            input.Enable();
+    }
 }
