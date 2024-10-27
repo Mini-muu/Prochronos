@@ -2,7 +2,6 @@
 
 public class ItemObject : MonoBehaviour
 {
-
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private ItemData itemData;
 
@@ -19,23 +18,32 @@ public class ItemObject : MonoBehaviour
         gameObject.name = $"Item Object - {itemData.name}";
     }
 
+    //TODO - Adapt to Graphics
     public void PickupItem()
     {
-        if (itemData.itemType == ItemType.Equipment)
+        switch (itemData.itemType)
         {
-            ItemData_Equipment equipment = itemData as ItemData_Equipment;
-            Inventory.instance.EquipItem(equipment);
+            case ItemType.Bones:
+                BonesData bones = itemData as BonesData;
+                bones.GenerateAmount();
+                PlayerManager.instance.wallet.IncreaseAmountBy(bones.DroppedAmount);
+                break;
+            case ItemType.Equipment:
+                ItemData_Equipment equipment = itemData as ItemData_Equipment;
+                Inventory.instance.EquipItem(equipment);
+                break;
+            case ItemType.Consumable:
+            case ItemType.Meat:
+            default:
+                if (!Inventory.instance.AreUpperUISlotsFull())
+                    Inventory.instance.AddItem(itemData);
+                else
+                    return;
+                break;
         }
-        else if (itemData.itemType == ItemType.Bones)
-        {
-            BonesData bones = itemData as BonesData;
-            PlayerManager.instance.wallet.IncreaseAmountBy(bones.amount);
-        }
-        else
-        {
-            Inventory.instance.AddItem(itemData);
-            //itemData.ExecuteItemEffects();
-        }
+
+        //TODO - Item Effects on Equip, Pickup, Use
+        //itemData.ExecuteItemEffects();
 
         Destroy(gameObject);
     }
@@ -48,44 +56,3 @@ public class ItemObject : MonoBehaviour
         SetUpItemData();
     }
 }
-
-/*
- 
-    private void Update()
-    {
-        TryPickUpItem();
-    }
-
-    private void TryPickUpItem() {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, pickUpRadius);
-        foreach (var hit in colliders)
-        {
-            if (hit.GetComponent<Player>() != null)
-            {
-                if(IsPickUpUnlocked())
-                    PickUp();
-            }
-        }
-    }
-
-    private bool IsPickUpUnlocked() => PlayerManager.instance.unlockedActions.Contains(PlayerAction.AutoPickUp);
-
-    private void PickUp()
-    {
-        if (itemData.itemType == ItemType.Equipment)
-        {
-            ItemData_Equipment equipment = itemData as ItemData_Equipment;
-            Inventory.instance.EquipItem(equipment);
-        }
-        else
-        {
-            Inventory.instance.AddItem(itemData);
-        }
-
-        Destroy(gameObject);
-    }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawWireSphere(transform.position, pickUpRadius);
-    }*/

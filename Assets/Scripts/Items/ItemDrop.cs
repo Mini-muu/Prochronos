@@ -3,28 +3,30 @@ using UnityEngine;
 
 public class ItemDrop : MonoBehaviour
 {
-    [SerializeField] private int amountOfItems;
     [SerializeField] private ItemData[] possibleDrop;
-    private List<ItemData> dropList = new List<ItemData>();
+    private readonly List<ItemData> dropList = new ();
 
     [SerializeField] private GameObject dropPrefab;
 
     public void GenerateDrop()
     {
+        if (possibleDrop.Length == 0) return;
+
+        SelectDrop();
+
+        if(dropList.Count == 0) return;
+
+        foreach(ItemData item in dropList)
+            DropItem(item);
+    }
+
+    private void SelectDrop()
+    {
         for (int i = 0; i < possibleDrop.Length; i++)
         {
-            if (Random.Range(0, 100) <= possibleDrop[i].dropChance)
-            {
+            //If the random number is lower than the dropchance then the items will be dropped
+           if (Random.Range(0.1f, 100f) <= possibleDrop[i].dropChance)
                 dropList.Add(possibleDrop[i]);
-            }
-        }
-
-        for (int i = 0; i < amountOfItems; i++)
-        {
-            ItemData randomItem = dropList[Random.Range(0, dropList.Count - 1)];
-
-            dropList.Remove(randomItem);
-            DropItem(randomItem);
         }
     }
 
@@ -32,12 +34,13 @@ public class ItemDrop : MonoBehaviour
     {
         GameObject newDrop = Instantiate(dropPrefab, transform.position, Quaternion.identity);
 
-        Vector2 radnomVelocity = new Vector2(Random.Range(-5, 5), Random.Range(15, 20));
+        //Item drop "Pop" Effect
+        Vector2 randomVelocity = new(Random.Range(-5, 5), Random.Range(15, 20));
 
-        newDrop.GetComponent<ItemObject>().SetupItem(_itemData, radnomVelocity);
+        newDrop.GetComponent<ItemObject>().SetupItem(_itemData, randomVelocity);
     }
 
-
+    //TODO - Remove
     public void TutorialDropGenerator(bool isBones)
     {
         if (isBones)
@@ -50,11 +53,12 @@ public class ItemDrop : MonoBehaviour
         }
     }
 
+    //TODO - Remove
     private void TutorialDrop(ItemData _itemData)
     {
         GameObject newDrop = Instantiate(dropPrefab, transform.position, Quaternion.identity);
 
-        Vector2 randomVelocity = new Vector2(14, Random.Range(15, 20));
+        Vector2 randomVelocity = new(14, Random.Range(15, 20));
 
         newDrop.GetComponent<ItemObject>().SetupItem(_itemData, randomVelocity);
     }

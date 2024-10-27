@@ -2,18 +2,17 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
+/*
+ * TODO - Analyze Code, check if inventoryItems and uniqueInventoryItems are conflicting in someway
+ * Probably same items are stored in both lists, in case adapt the code
+ */
 public class Inventory : MonoBehaviour, ISaveManager
 {
     public static Inventory instance;
 
     public List<InventoryItem> inventoryItems;
-    // public Dictionary<ItemData, InventoryItem> inventoryDictionary;
 
-    //
-
-    public List<KeyValuePair<ItemData, InventoryItem>> inventoryItemsAlt;
-
-    //
+    public List<KeyValuePair<ItemData, InventoryItem>> uniqueInventoryItems;
 
     public List<InventoryItem> equipment;
     public Dictionary<ItemData_Equipment, InventoryItem> equipemntDictionary;
@@ -42,8 +41,7 @@ public class Inventory : MonoBehaviour, ISaveManager
     private void Start()
     {
         inventoryItems = new List<InventoryItem>();
-        //inventoryDictionary = new Dictionary<ItemData, InventoryItem>();
-        inventoryItemsAlt = new List<KeyValuePair<ItemData, InventoryItem>>();
+        uniqueInventoryItems = new List<KeyValuePair<ItemData, InventoryItem>>();
 
         equipment = new List<InventoryItem>();
         equipemntDictionary = new Dictionary<ItemData_Equipment, InventoryItem>();
@@ -69,7 +67,7 @@ public class Inventory : MonoBehaviour, ISaveManager
         ItemData_Equipment newEquipment = _item as ItemData_Equipment;
         InventoryItem newItem = new InventoryItem(_item);
 
-        //If equipment is unique then check in dictionary its presence
+        //TODO - If equipment is unique then check in dictionary its presence
 
         equipment.Add(newItem);
         equipemntDictionary.Add(newEquipment, newItem);
@@ -90,25 +88,25 @@ public class Inventory : MonoBehaviour, ISaveManager
 
     public void AddItem(ItemData _item)
     {
-        if (!IsMeat(_item) && TryGetValue(_item, out InventoryItem value) != null)
+        if (!IsMeat(_item) && TryGetUniqueInventoryItem(_item, out InventoryItem value) != null)
         {
             value.AddStack();
         }
         else
         {
-            InventoryItem newItem = new InventoryItem(_item);
+            InventoryItem newItem = new(_item);
             inventoryItems.Add(newItem);
-            inventoryItemsAlt.Add(new KeyValuePair<ItemData, InventoryItem>(_item, newItem));
+            uniqueInventoryItems.Add(new KeyValuePair<ItemData, InventoryItem>(_item, newItem));
         }
 
         UpdateSlotUI();
     }
 
-    public InventoryItem TryGetValue(ItemData key, out InventoryItem value)
+    public InventoryItem TryGetUniqueInventoryItem(ItemData key, out InventoryItem value)
     {
         value = null;
 
-        foreach (var itemPair in inventoryItemsAlt)
+        foreach (var itemPair in uniqueInventoryItems)
         {
             if (itemPair.Key == key)
             {
@@ -118,28 +116,28 @@ public class Inventory : MonoBehaviour, ISaveManager
         return value;
     }
 
-    private bool IsMeat(ItemData item)
-    {
-        return item.itemType == ItemType.Meat;
-    }
+    private bool IsMeat(ItemData item) => item.itemType == ItemType.Meat;
 
+    //TODO - Adapt to everykind of items (unique and not)
     public void RemoveItem(ItemData _item)
     {
-        if (TryGetValue(_item, out InventoryItem value) != null)
+        if (TryGetUniqueInventoryItem(_item, out InventoryItem uniqueItem) != null)
         {
-            if (value.stackSize <= 1)
+            if (uniqueItem.stackSize <= 1)
             {
-                inventoryItems.Remove(value);
-                inventoryItemsAlt.Remove(new KeyValuePair<ItemData, InventoryItem>(_item, value));
+                inventoryItems.Remove(uniqueItem);
+                uniqueInventoryItems.Remove(new KeyValuePair<ItemData, InventoryItem>(_item, uniqueItem));
             }
             else
             {
-                value.RemoveStack();
+                uniqueItem.RemoveStack();
             }
         }
 
         UpdateSlotUI();
     }
+
+    public bool AreUpperUISlotsFull() => inventoryItems.Count > 2;
 
     public void LoadData(GameData _data)
     {
@@ -158,11 +156,12 @@ public class Inventory : MonoBehaviour, ISaveManager
         }
     }
 
+    //TODO - Adapt to unique items -> Check Error
     public void SaveData(ref GameData _data)
     {
         _data.inventory.Clear();
 
-        foreach (KeyValuePair<ItemData, InventoryItem> pair in inventoryItemsAlt)
+        foreach (KeyValuePair<ItemData, InventoryItem> pair in uniqueInventoryItems)
         {
             _data.inventory.Add(pair.Key.itemId, pair.Value.stackSize);
         }

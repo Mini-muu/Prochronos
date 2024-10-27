@@ -10,6 +10,7 @@ public class CharacterStats : MonoBehaviour
     public Stat armor;
     public Stat damage;
     public Stat strongDamage;
+    public Stat speed;
 
     [Space(20)]
 

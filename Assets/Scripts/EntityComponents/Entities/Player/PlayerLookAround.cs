@@ -5,10 +5,11 @@ using UnityEngine.InputSystem;
 
 public class PlayerLookAround : MonoBehaviour
 {
-    [SerializeField, Range(-0.5f, 1.5f)] float defaultYPos = 0.8f;
     [SerializeField, Range(0.9f, 1.06f)] float upperYDest = 1.05f;
     [SerializeField, Range(0.05f, 0.5f)] float lowerYDest = 0.07f;
-
+    
+    //Reminder of initial Y Setup
+    private float defaultYPos = 0.8f;
     private float yPos;
     private float yDest;
 
@@ -19,8 +20,9 @@ public class PlayerLookAround : MonoBehaviour
     private void Start()
     {
         moveAction = PlayerInputManager.instance.move;
-        yPos = defaultYPos;
         virtualCameraTransposer = virtualCamera.GetCinemachineComponent<CinemachineFramingTransposer>();
+        defaultYPos = virtualCameraTransposer.m_ScreenY;
+        yPos = defaultYPos;
     }
 
     // Update is called once per frame
