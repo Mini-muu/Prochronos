@@ -123,6 +123,11 @@ public class Player : Entity
         }*/
     }
 
+    private void OnDestroy()
+    {
+        PlayerInputManager.instance.roll.performed -= CheckForRollInput;
+    }
+
     public IEnumerator BusyFor(float _seconds)
     {
         IsBusy = true;

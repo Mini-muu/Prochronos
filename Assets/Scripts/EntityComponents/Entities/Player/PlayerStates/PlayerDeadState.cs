@@ -4,11 +4,14 @@
     {
     }
 
+    private bool saved;
+
     public override void Enter()
     {
         base.Enter();
         player.gameObject.layer = 0;
         player.SetDeadVelocity();
+        saved = false;
     }
 
     public override void Exit()
@@ -26,7 +29,12 @@
         if (player.IsGroundDetected() /*|| player.IsWallDetected()*/)
             player.SetZeroVelocity();
 
-        PlayerManager.instance.ClearUnlockedActions();
+        if (!saved)
+        {
+            SaveManager.instance.SaveGame();
+            PlayerManager.instance.ClearUnlockedActions();
+            saved = true;
+        }
 
         /*if (triggerCalled && player.IsGroundDetected())
         {

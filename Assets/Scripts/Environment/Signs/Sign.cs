@@ -15,7 +15,8 @@ public class Sign : MonoBehaviour
 
     [SerializeField] private List<GameObject> signType;
 
-    private bool hasBeenOpenedOnce = false; // nuova variabile boleana per vedere se il cartello è gia stato attivato o meno
+    // nuova variabile boleana per vedere se il cartello è gia stato attivato o meno
+    private bool hasBeenOpenedOnce = false;
 
     private void OnValidate()
     {

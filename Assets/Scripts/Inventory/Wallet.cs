@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Wallet : MonoBehaviour
+public class Wallet : MonoBehaviour, ISaveManager
 {
 
     [SerializeField] private int currentBonesAmount;
@@ -36,4 +36,14 @@ public class Wallet : MonoBehaviour
     }
 
     public bool HasEnoughMoney(int amountNeeded) => currentBonesAmount >= amountNeeded;
+
+    public void LoadData(GameData _data)
+    {
+        currentBonesAmount = _data.currentBonesAmount;
+    }
+
+    public void SaveData(ref GameData _data)
+    {
+        _data.currentBonesAmount = currentBonesAmount;
+    }
 }

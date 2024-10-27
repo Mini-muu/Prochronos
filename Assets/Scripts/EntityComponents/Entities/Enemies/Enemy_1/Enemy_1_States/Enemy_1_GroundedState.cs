@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Unity.VisualScripting;
+using UnityEngine;
 
 public class Enemy_1_GroundedState : EnemyState
 {
@@ -29,6 +30,8 @@ public class Enemy_1_GroundedState : EnemyState
     public override void Update()
     {
         base.Update();
+
+        if (playerTransform == null) return;
 
         if (enemy.IsPlayerDetected() || Vector2.Distance(enemy.transform.position, playerTransform.position) < 2)
         {

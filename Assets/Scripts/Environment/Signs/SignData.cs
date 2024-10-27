@@ -5,8 +5,7 @@ using UnityEngine;
 public class SignData : ScriptableObject
 {
     public string SignName;
-    [TextArea]
-    public string SignText;
+    [TextArea] public string SignText;
 
     public List<PlayerAction> actionsUnlocked;
 

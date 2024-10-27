@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Xml.Schema;
 using TMPro;
 using UnityEngine;
 
@@ -7,7 +8,7 @@ public class PlayerManager : MonoBehaviour, ISaveManager
     public static PlayerManager instance;
     public PlayerStats playerStats;
     public Player player;
-    private int playerBones;
+    //TODO - Check if used
     [SerializeField] private TextMeshProUGUI bonesAmountText;
 
     public Wallet wallet;
@@ -32,14 +33,20 @@ public class PlayerManager : MonoBehaviour, ISaveManager
         wallet.UpdateBonesUI();
     }
 
-    public void LoadData(GameData data)
+    public void LoadData(GameData _data)
     {
-        Debug.LogWarning("Not Implemented Loader");
+        ClearUnlockedActions();
+
+        foreach(var action in _data.unlockedActions)
+            unlockedActions.Add(action);
     }
 
     public void SaveData(ref GameData _data)
     {
-        Debug.LogWarning("Not Implemented Saver");
+        _data.unlockedActions.Clear();
+
+        foreach (var action in unlockedActions) 
+            _data.unlockedActions.Add(action);
     }
 
     public void ClearUnlockedActions() => unlockedActions.Clear();
