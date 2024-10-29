@@ -27,6 +27,8 @@ public class Player : Entity
 
     [HideInInspector] public SkillManager skill;
 
+    public bool canMove;
+
     #region States
     public PlayerStateMachine StateMachine { get; private set; }
 
@@ -86,31 +88,54 @@ public class Player : Entity
         StateMachine.Initialize(IdleState);
         skill = SkillManager.instance;
         PlayerInputManager.instance.roll.performed += CheckForRollInput;
+
+        canMove = true;
     }
 
     protected override void Update()
     {
+        if (canMove)
+        {
+
         base.Update();
         StateMachine.CurrentState.Update();
 
-        //CheckForRollInput();
+            //CheckForRollInput();
 
-        /*if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            TryUseItem(0);
+            /*if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                TryUseItem(0);
+            }
+
+            if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                TryUseItem(1);
+            }
+
+            if (Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                TryUseItem(2);
+            }
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha2))
+        private static void TryUseItem(int slot)
         {
-            TryUseItem(1);
-        }
+            if (Inventory.instance.inventoryItemsAlt.Count < slot+1) return;
 
-        if (Input.GetKeyDown(KeyCode.Alpha3))
+            ItemData item = Inventory.instance.inventoryItemsAlt[slot].Key;
+            if (item != null)
+            {
+                item.ExecuteItemEffects();
+                Inventory.instance.RemoveItem(item);
+            }*/
+        }
+        else
         {
-            TryUseItem(2);
+            RB.velocity = Vector2.zero;
         }
     }
 
+<<<<<<< Updated upstream
     private static void TryUseItem(int slot)
     {
         if (Inventory.instance.inventoryItemsAlt.Count < slot+1) return;
@@ -128,6 +153,8 @@ public class Player : Entity
         PlayerInputManager.instance.roll.performed -= CheckForRollInput;
     }
 
+=======
+>>>>>>> Stashed changes
     public IEnumerator BusyFor(float _seconds)
     {
         IsBusy = true;
