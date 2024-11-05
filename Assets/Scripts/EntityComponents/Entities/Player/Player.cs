@@ -135,10 +135,9 @@ public class Player : Entity
         }
     }
 
-<<<<<<< Updated upstream
     private static void TryUseItem(int slot)
     {
-        if (Inventory.instance.inventoryItemsAlt.Count < slot+1) return;
+        /*if (Inventory.instance.inventoryItemsAlt.Count < slot+1) return;
 
         ItemData item = Inventory.instance.inventoryItemsAlt[slot].Key;
         if (item != null)
@@ -153,8 +152,6 @@ public class Player : Entity
         PlayerInputManager.instance.roll.performed -= CheckForRollInput;
     }
 
-=======
->>>>>>> Stashed changes
     public IEnumerator BusyFor(float _seconds)
     {
         IsBusy = true;
