@@ -7,13 +7,13 @@ public class GameOver
 {
     public GameOver()
     {
-        LoadDemo();
+        LoadGame();
     }
 
-    private void LoadDemo() => SceneManager.LoadScene("DemoTutorial");
+    //private void LoadDemo() => SceneManager.LoadScene("DemoTutorial");
 
     public void LoadGame()
     {
-        SceneManager.LoadScene("Game");
+        SceneManager.LoadScene("Demo_Boss");
     }
 }
