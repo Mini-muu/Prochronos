@@ -11,6 +11,7 @@ public class BaseInteraction : MonoBehaviour
     {
         if (collision.GetComponent<Player>() != null)
         {
+            PlayerEnteredArea();
             //replace with performed
             if (IsKeyPressNeeded && CheckKeyPress())//Input.GetKeyDown(interactionKey))
                 ExecuteInteraction();
@@ -21,11 +22,9 @@ public class BaseInteraction : MonoBehaviour
 
     private bool CheckKeyPress() => PlayerInputManager.instance.interact.IsPressed();
 
+    public virtual void ExecuteInteraction() { }
 
-    public virtual void ExecuteInteraction()
-    {
-
-    }
+    public virtual void PlayerEnteredArea() { }
 
     //Type interaction
     //Monoliti -> Interagibile

@@ -30,13 +30,13 @@ public class ItemObject : MonoBehaviour
                 break;
             case ItemType.Equipment:
                 ItemData_Equipment equipment = itemData as ItemData_Equipment;
-                Inventory.instance.EquipItem(equipment);
+                UniqueInventory.instance.EquipItem(equipment);
                 break;
             case ItemType.Consumable:
             case ItemType.Meat:
             default:
-                if (!Inventory.instance.AreUpperUISlotsFull())
-                    Inventory.instance.AddItem(itemData);
+                if (!UniqueInventory.instance.AreUpperUISlotsFull())
+                    UniqueInventory.instance.AddItem(itemData);
                 else
                     return;
                 break;

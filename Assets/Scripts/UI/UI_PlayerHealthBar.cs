@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -33,7 +34,7 @@ public class UI_PlayerHealthBar : MonoBehaviour
 
     private void UpdateHealthUI()
     {
-        int currentHp = playerStats.currentHealth;
+        /*int currentHp = playerStats.currentHealth;
 
         //MaxHP = 5 -> 3 Slot
         //currentHP = 3 -> 1.5 slot
@@ -46,12 +47,50 @@ public class UI_PlayerHealthBar : MonoBehaviour
             //
             //i = 1 -> 4 > 2(i+1) [y] -> intact
             //i = 2 -> 4 > 4(i+1) [n] -> 4 - 4(actual) >= 2 [n] -> 4(actual) % 2 == 0 [y] -> intact
+        }*/
+
+        //Rewritten
+        //Starting Max Health = 3 -> 30 Hit Points -> 3 Intact Hearts
+        //Current Health = 2.5 -> 25 Hit Points -> 2 Intact Hearts and HALF
+        for (int i = 0; i < hpIndicators.Count; i++)
+        {
+            //i (heart) = 1 -> if CurrentHP (15) > i * 10 -> yes -> Intact 
+            //i (heart) = 2 -> if CurrentHP (15) > i * 10 -> no -> if i * 10 - CurrentHP >= 0 -> no -> Damaged
+            //i (heart) = 3 -> if CurrentHP (15) > i * 10 -> no -> if i * 10 - CurrentHP >= 0 -> yes -> broken 
+
+            hpIndicators[i].GetComponent<Image>().sprite = GetCorrectHeartSprite(i+1);
+            hpIndicators[i].GetComponent<Image>().color = SetColorFromSpriteType(hpIndicators[i].GetComponent<Image>().sprite);
         }
+    }
+
+    private Color SetColorFromSpriteType(Sprite sprite)
+    {
+        float val = 1f;
+
+        if (sprite == damagedfHPSprite)
+            val = 0.75f;
+
+        if(sprite == brokenHPSprite)
+            val = 0.30f;
+
+        return new Color(val,val,val,1);
+    }
+
+    private Sprite GetCorrectHeartSprite(int heartIndex)
+    {
+        int currentHp = playerStats.currentHealth;
+        
+        if (currentHp >= heartIndex * 10)
+            return intactHPSprite;
+        if (((heartIndex * 10) - currentHp) >= 10)
+            return brokenHPSprite;
+        else
+            return damagedfHPSprite;
     }
 
     private void UpdateMaxHealthUI()
     {
-        while (playerStats.maxHealth.GetValue() / 2.0 > hpIndicators.Count)
+        while (playerStats.maxHealth.GetValue() / 10 > hpIndicators.Count)
         {
             Transform clone = Instantiate(firstSprite, parentObject);
             clone.SetAsLastSibling();

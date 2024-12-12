@@ -9,6 +9,8 @@ public class GameData
 
     public List<PlayerAction> unlockedActions;
 
+    public Fireplace fireplaceCheckpoint;
+
     public GameData()
     {
         currentBonesAmount = 0;

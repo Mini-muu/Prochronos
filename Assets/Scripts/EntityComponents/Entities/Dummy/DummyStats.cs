@@ -26,10 +26,10 @@
         base.Die();
         dummy.Die();
 
-        if (!hasDroppedBones)
-        {
-            GetComponent<ItemDrop>().TutorialDropGenerator(true);
-            hasDroppedBones = true;
-        }
+        //if (!hasDroppedBones)
+        //{
+            //GetComponent<ItemDrop>().TutorialDropGenerator(true);
+            //hasDroppedBones = true;
+        //}
     }
 }

@@ -1,25 +1,20 @@
-using System;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-[Obsolete("Replaced by UniqueInventoryItem", true)]
-public class Inventory : MonoBehaviour, ISaveManager
+public class UniqueInventory : MonoBehaviour, ISaveManager
 {
-    public static Inventory instance;
+    public static UniqueInventory instance;
 
-    public List<InventoryItem> inventoryItems;
+    public List<KeyValuePair<ItemData, InventoryItem>> inventoryItems;
 
-    public List<KeyValuePair<ItemData, InventoryItem>> uniqueInventoryItems;
-
-    public List<InventoryItem> equipment;
-    public Dictionary<ItemData_Equipment, InventoryItem> equipemntDictionary;
+    public Dictionary<ItemData_Equipment, InventoryItem> equipment;
 
     [Header("Inventory UI")]
     [SerializeField] private Transform inventorySlotParent;
     private UI_ItemSlot[] inventoryItemSlot;
 
-    [Header("Data base")]
+    [Header("Database")]
     public List<ItemData> itemDataBase;
     public List<InventoryItem> loadedItems;
     public List<ItemData_Equipment> loadedEquipment;
@@ -38,11 +33,9 @@ public class Inventory : MonoBehaviour, ISaveManager
 
     private void Start()
     {
-        inventoryItems = new List<InventoryItem>();
-        uniqueInventoryItems = new List<KeyValuePair<ItemData, InventoryItem>>();
+        inventoryItems = new List<KeyValuePair<ItemData, InventoryItem>>();
 
-        equipment = new List<InventoryItem>();
-        equipemntDictionary = new Dictionary<ItemData_Equipment, InventoryItem>();
+        equipment = new Dictionary<ItemData_Equipment, InventoryItem>();
 
         inventoryItemSlot = inventorySlotParent.GetComponentsInChildren<UI_ItemSlot>();
     }
@@ -56,29 +49,25 @@ public class Inventory : MonoBehaviour, ISaveManager
 
         for (int i = 0; i < inventoryItems.Count; i++)
         {
-            inventoryItemSlot[i].UpdateSlot(inventoryItems[i]);
+            inventoryItemSlot[i].UpdateSlot(inventoryItems[i].Value);
         }
     }
 
     public void EquipItem(ItemData _item)
     {
-        ItemData_Equipment newEquipment = _item as ItemData_Equipment;
+        ItemData_Equipment newEquipment = Instantiate(_item as ItemData_Equipment);
         InventoryItem newItem = new InventoryItem(_item);
 
-        //TODO - If equipment is unique then check in dictionary its presence
-
-        equipment.Add(newItem);
-        equipemntDictionary.Add(newEquipment, newItem);
+        equipment.Add(newEquipment, newItem);
 
         newEquipment.AddModifiers();
     }
 
     public void UnEquipItem(ItemData_Equipment itemToRemove)
     {
-        if (equipemntDictionary.TryGetValue(itemToRemove, out InventoryItem value))
+        if (equipment.TryGetValue(itemToRemove, out InventoryItem value))
         {
-            equipment.Remove(value);
-            equipemntDictionary.Remove(itemToRemove);
+            equipment.Remove(itemToRemove);
 
             itemToRemove.RemoveModifiers();
         }
@@ -93,8 +82,7 @@ public class Inventory : MonoBehaviour, ISaveManager
         else
         {
             InventoryItem newItem = new(_item);
-            inventoryItems.Add(newItem);
-            uniqueInventoryItems.Add(new KeyValuePair<ItemData, InventoryItem>(_item, newItem));
+            inventoryItems.Add(new KeyValuePair<ItemData, InventoryItem>(Instantiate(_item), newItem));
         }
 
         UpdateSlotUI();
@@ -104,7 +92,7 @@ public class Inventory : MonoBehaviour, ISaveManager
     {
         value = null;
 
-        foreach (var itemPair in uniqueInventoryItems)
+        foreach (var itemPair in inventoryItems)
         {
             if (itemPair.Key == key)
             {
@@ -116,15 +104,13 @@ public class Inventory : MonoBehaviour, ISaveManager
 
     private bool IsMeat(ItemData item) => item.itemType == ItemType.Meat;
 
-    //TODO - Adapt to everykind of items (unique and not)
     public void RemoveItem(ItemData _item)
     {
         if (TryGetUniqueInventoryItem(_item, out InventoryItem uniqueItem) != null)
         {
             if (uniqueItem.stackSize <= 1)
             {
-                inventoryItems.Remove(uniqueItem);
-                uniqueInventoryItems.Remove(new KeyValuePair<ItemData, InventoryItem>(_item, uniqueItem));
+                inventoryItems.Remove(new KeyValuePair<ItemData, InventoryItem>(_item, uniqueItem));
             }
             else
             {
@@ -158,13 +144,35 @@ public class Inventory : MonoBehaviour, ISaveManager
     {
         _data.inventory.Clear();
 
-        //TODO - Check Error without Null Check Condition
-        if (uniqueInventoryItems == null || uniqueInventoryItems.Count <= 0) return;
-
-        foreach (KeyValuePair<ItemData, InventoryItem> pair in uniqueInventoryItems)
+        foreach (KeyValuePair<ItemData, InventoryItem> pair in inventoryItems)
         {
             _data.inventory.Add(pair.Key.itemId, pair.Value.stackSize);
         }
+    }
+
+    public void ReplaceFirstOccurrence(ItemType oldItemType, ItemData newItemData)
+    {
+        foreach (var item in inventoryItems)
+        {
+            if (item.Key.itemType == oldItemType)
+            {
+                int index = inventoryItems.IndexOf(item);
+                inventoryItems.RemoveAt(index);
+                var newItem = new KeyValuePair<ItemData, InventoryItem>(newItemData, item.Value);
+                inventoryItems.Insert(index, newItem);
+            }
+        }
+    }
+
+    public bool HasItem(ItemType type)
+    {
+        foreach (var item in inventoryItems)
+        {
+            if (item.Key.itemType == type)
+                return true;
+        }
+
+        return false;
     }
 
 #if UNITY_EDITOR

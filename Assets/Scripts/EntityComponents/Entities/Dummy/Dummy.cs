@@ -65,12 +65,12 @@ public class Dummy : Entity
 
     private void TryDropMeat()
     {
-        hitCounter++;
-        if (hitCounter == 2 && !hasDroppedMeat)
-        {
-            GetComponent<ItemDrop>().TutorialDropGenerator(false);
-            hasDroppedMeat = true;
-        }
+        //hitCounter++;
+        //if (hitCounter == 2 && !hasDroppedMeat)
+        //{
+        //    GetComponent<ItemDrop>().TutorialDropGenerator(false);
+        //    hasDroppedMeat = true;
+        //}
     }
 
     internal void Destroy()

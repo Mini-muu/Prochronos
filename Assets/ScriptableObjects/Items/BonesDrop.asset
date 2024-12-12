@@ -16,7 +16,7 @@ MonoBehaviour:
   itemName: Bones
   icon: {fileID: 21300000, guid: d4608d9e543ceed40b8c1ee4b6117f66, type: 3}
   itemId: 6030b901a7e8f3b40a1d792b4ee0ccec
-  dropChance: 50
+  dropChance: 100
   itemEffects: []
   minAmount: 1
   maxAmount: 10
