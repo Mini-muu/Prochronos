@@ -44,19 +44,19 @@ public class MerchantShop : BaseInteraction
 
     public void SellSingleGoods(GoodsData goods)
     {
-        //Player Inventory check
+        //TODO - Player Inventory check
         throw new NotImplementedException();
     }
 
     public void SellMultipleGoods()
     {
-        //Player Inventory check
+        //TODO - Player Inventory check
         throw new NotImplementedException();
     }
 
     private void GiveItem(GoodsData goods)
     {
-        //Player Inventory check
+        //TODO - Player Inventory check
         throw new NotImplementedException();
     }
 
