@@ -1,0 +1,412 @@
+fileFormatVersion: 2
+guid: ab17ec98955e670408fc07cdfb41d5b4
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4269082015873047731
+    second: mushrum_0
+  - first:
+      213: 5580845910301542159
+    second: mushrum_1
+  - first:
+      213: 1663790968296798189
+    second: mushrum_2
+  - first:
+      213: -4976663600409716354
+    second: mushrum_3
+  - first:
+      213: 3457973810478358654
+    second: mushrum_4
+  - first:
+      213: 3873343329105309019
+    second: mushrum_5
+  - first:
+      213: -2386484014137672262
+    second: mushrum_6
+  - first:
+      213: -8954412414278019999
+    second: mushrum_7
+  - first:
+      213: -5292340027962674055
+    second: mushrum_8
+  - first:
+      213: -96030762577235729
+    second: mushrum_9
+  - first:
+      213: 1054097158098147994
+    second: mushrum_10
+  - first:
+      213: -6069308029089971173
+    second: mushrum_11
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: mushrum_0
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 2339
+        width: 1414
+        height: 294
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d43e0ee668c21c4c0800000000000000
+      internalID: -4269082015873047731
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mushrum_1
+      rect:
+        serializedVersion: 2
+        x: 1614
+        y: 2246
+        width: 1971
+        height: 387
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f0707bd69c5237d40800000000000000
+      internalID: 5580845910301542159
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mushrum_2
+      rect:
+        serializedVersion: 2
+        x: 4737
+        y: 1638
+        width: 2320
+        height: 1065
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: de775dd0219f61710800000000000000
+      internalID: 1663790968296798189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mushrum_3
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 868
+        width: 1544
+        height: 950
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e7956faa2d65feab0800000000000000
+      internalID: -4976663600409716354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mushrum_4
+      rect:
+        serializedVersion: 2
+        x: 2774
+        y: 1551
+        width: 1836
+        height: 621
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e70aa280cd03dff20800000000000000
+      internalID: 3457973810478358654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mushrum_5
+      rect:
+        serializedVersion: 2
+        x: 3934
+        y: 926
+        width: 1683
+        height: 640
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b5d63786c31e0c530800000000000000
+      internalID: 3873343329105309019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mushrum_6
+      rect:
+        serializedVersion: 2
+        x: 1721
+        y: 868
+        width: 2108
+        height: 589
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: abdfc2bee6181eed0800000000000000
+      internalID: -2386484014137672262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mushrum_7
+      rect:
+        serializedVersion: 2
+        x: 5749
+        y: 735
+        width: 1308
+        height: 722
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1645c9a0a598bb380800000000000000
+      internalID: -8954412414278019999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mushrum_8
+      rect:
+        serializedVersion: 2
+        x: 534
+        y: 70
+        width: 2424
+        height: 701
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 97434bad8c4dd86b0800000000000000
+      internalID: -5292340027962674055
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mushrum_9
+      rect:
+        serializedVersion: 2
+        x: 3009
+        y: 59
+        width: 1351
+        height: 731
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fe0f21db784daaef0800000000000000
+      internalID: -96030762577235729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mushrum_10
+      rect:
+        serializedVersion: 2
+        x: 4406
+        y: 42
+        width: 1091
+        height: 424
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a9a503bc7c7e0ae00800000000000000
+      internalID: 1054097158098147994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mushrum_11
+      rect:
+        serializedVersion: 2
+        x: 5540
+        y: 37
+        width: 1554
+        height: 626
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b148aad018c75cba0800000000000000
+      internalID: -6069308029089971173
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      mushrum_0: -4269082015873047731
+      mushrum_1: 5580845910301542159
+      mushrum_10: 1054097158098147994
+      mushrum_11: -6069308029089971173
+      mushrum_2: 1663790968296798189
+      mushrum_3: -4976663600409716354
+      mushrum_4: 3457973810478358654
+      mushrum_5: 3873343329105309019
+      mushrum_6: -2386484014137672262
+      mushrum_7: -8954412414278019999
+      mushrum_8: -5292340027962674055
+      mushrum_9: -96030762577235729
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
