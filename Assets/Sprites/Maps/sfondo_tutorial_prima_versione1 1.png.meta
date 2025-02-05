@@ -128,7 +128,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      sfondo_tutorial_prima_versione1 1_0: -8132551213466153383
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
