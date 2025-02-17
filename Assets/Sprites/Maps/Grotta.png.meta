@@ -1,0 +1,664 @@
+fileFormatVersion: 2
+guid: 9b6df1d079a31c74ab0a6a2579e81aa3
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5190701339269558943
+    second: Grotta_0
+  - first:
+      213: 5227716497448546918
+    second: Grotta_1
+  - first:
+      213: -6969325148320487988
+    second: Grotta_2
+  - first:
+      213: -7134909603334937495
+    second: Grotta_3
+  - first:
+      213: 473127411596571416
+    second: Grotta_4
+  - first:
+      213: 6963206379982817891
+    second: Grotta_5
+  - first:
+      213: -4822608365630915313
+    second: Grotta_6
+  - first:
+      213: -5161486855532273908
+    second: Grotta_7
+  - first:
+      213: -2656094860412185058
+    second: Grotta_8
+  - first:
+      213: -6563409024439954048
+    second: Grotta_9
+  - first:
+      213: -5262975120341496640
+    second: Grotta_10
+  - first:
+      213: -3477665214050075629
+    second: Grotta_11
+  - first:
+      213: 7911944053118275855
+    second: Grotta_12
+  - first:
+      213: -5628593186937725944
+    second: Grotta_13
+  - first:
+      213: 9083805685083452913
+    second: Grotta_14
+  - first:
+      213: -1408482034556064202
+    second: Grotta_15
+  - first:
+      213: 8070565574035606892
+    second: Grotta_16
+  - first:
+      213: -8160590468624405904
+    second: Grotta_17
+  - first:
+      213: 1046056266528684375
+    second: Grotta_18
+  - first:
+      213: 9114925497626767293
+    second: Grotta_19
+  - first:
+      213: -6167930425494036799
+    second: Grotta_20
+  - first:
+      213: -3862864257819151382
+    second: Grotta_21
+  - first:
+      213: -1128969492264765972
+    second: Grotta_22
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Grotta_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 5788
+        width: 6794
+        height: 2177
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f927e46dd53190840800000000000000
+      internalID: 5190701339269558943
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grotta_1
+      rect:
+        serializedVersion: 2
+        x: 1210
+        y: 5798
+        width: 144
+        height: 410
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 662bed0f4749c8840800000000000000
+      internalID: 5227716497448546918
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grotta_2
+      rect:
+        serializedVersion: 2
+        x: 1802
+        y: 5803
+        width: 178
+        height: 238
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc52922e3bbf74f90800000000000000
+      internalID: -6969325148320487988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grotta_3
+      rect:
+        serializedVersion: 2
+        x: 2229
+        y: 5821
+        width: 134
+        height: 241
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 964a2b4a485bbfc90800000000000000
+      internalID: -7134909603334937495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grotta_4
+      rect:
+        serializedVersion: 2
+        x: 2985
+        y: 5826
+        width: 114
+        height: 139
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 813b6b5cfd2e09600800000000000000
+      internalID: 473127411596571416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grotta_5
+      rect:
+        serializedVersion: 2
+        x: 3295
+        y: 5813
+        width: 98
+        height: 145
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 36a0c985f4742a060800000000000000
+      internalID: 6963206379982817891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grotta_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3623
+        width: 6794
+        height: 2135
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f0dfdb32e37a21db0800000000000000
+      internalID: -4822608365630915313
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grotta_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1436
+        width: 4369
+        height: 2135
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c0f96273d07be58b0800000000000000
+      internalID: -5161486855532273908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grotta_8
+      rect:
+        serializedVersion: 2
+        x: 4509
+        y: 1751
+        width: 372
+        height: 1809
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e16146b0cc7a32bd0800000000000000
+      internalID: -2656094860412185058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grotta_9
+      rect:
+        serializedVersion: 2
+        x: 5021
+        y: 1818
+        width: 305
+        height: 1655
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 085d9a644461ae4a0800000000000000
+      internalID: -6563409024439954048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grotta_10
+      rect:
+        serializedVersion: 2
+        x: 5369
+        y: 1807
+        width: 359
+        height: 1547
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0cc8352330826f6b0800000000000000
+      internalID: -5262975120341496640
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grotta_11
+      rect:
+        serializedVersion: 2
+        x: 5777
+        y: 1816
+        width: 343
+        height: 1439
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 31cffccc9e9dcbfc0800000000000000
+      internalID: -3477665214050075629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grotta_12
+      rect:
+        serializedVersion: 2
+        x: 6146
+        y: 1852
+        width: 326
+        height: 1037
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f0111e0723fdccd60800000000000000
+      internalID: 7911944053118275855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grotta_13
+      rect:
+        serializedVersion: 2
+        x: 6523
+        y: 1944
+        width: 226
+        height: 788
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 80c946b615833e1b0800000000000000
+      internalID: -5628593186937725944
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grotta_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 2351
+        height: 1362
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f5b21c7429201e70800000000000000
+      internalID: 9083805685083452913
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grotta_15
+      rect:
+        serializedVersion: 2
+        x: 2424
+        y: 979
+        width: 865
+        height: 420
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 63e24c15d01147ce0800000000000000
+      internalID: -1408482034556064202
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grotta_16
+      rect:
+        serializedVersion: 2
+        x: 4620
+        y: 732
+        width: 663
+        height: 599
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c6d83e041a8600070800000000000000
+      internalID: 8070565574035606892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grotta_17
+      rect:
+        serializedVersion: 2
+        x: 5768
+        y: 1290
+        width: 959
+        height: 374
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 07a24389432cfbe80800000000000000
+      internalID: -8160590468624405904
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grotta_18
+      rect:
+        serializedVersion: 2
+        x: 2469
+        y: 572
+        width: 605
+        height: 324
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7597385d1a6548e00800000000000000
+      internalID: 1046056266528684375
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grotta_19
+      rect:
+        serializedVersion: 2
+        x: 3412
+        y: 9
+        width: 1130
+        height: 1109
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dbfa1387278be7e70800000000000000
+      internalID: 9114925497626767293
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grotta_20
+      rect:
+        serializedVersion: 2
+        x: 4635
+        y: 11
+        width: 891
+        height: 619
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1ce9a1505fb176aa0800000000000000
+      internalID: -6167930425494036799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grotta_21
+      rect:
+        serializedVersion: 2
+        x: 5666
+        y: 22
+        width: 1128
+        height: 1153
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae3f2218c69546ac0800000000000000
+      internalID: -3862864257819151382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grotta_22
+      rect:
+        serializedVersion: 2
+        x: 2485
+        y: 0
+        width: 825
+        height: 510
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ce53e437a381550f0800000000000000
+      internalID: -1128969492264765972
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable: {}
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
